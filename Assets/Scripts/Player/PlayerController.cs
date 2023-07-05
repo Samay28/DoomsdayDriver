@@ -9,11 +9,13 @@ public class PlayerControler : MonoBehaviour
     public static GameObject Player;
     Rigidbody rb;
     public static float movespeed;
-    float speed = 0.2f;
+    [SerializeField] float speed = 20f;
     float dx;
     public static bool IsColidedObstacle = false;
     public GenerateW gw;
     public TextMeshProUGUI scoreText;
+    [SerializeField] private float minRotation;
+    [SerializeField] private float maxRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +30,31 @@ public class PlayerControler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Get the user input for left/right movement
-        float horizontalInput = Input.GetAxis("Horizontal");
+        if (Input.GetMouseButton(0))
+        {
+            Time.timeScale = 1f;
 
-        // Calculate the movement vector based on user input
-        Vector3 movement = new Vector3(horizontalInput * movespeed * Time.deltaTime, 0f, speed);
+            if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
+            {
+                transform.Rotate(0f, -speed * Time.deltaTime, 0f); // Rotate the object counterclockwise around its Y-axis
+            }
+            else
+            {
+                transform.Rotate(0f, speed * Time.deltaTime, 0f); // Rotate the object clockwise around its Y-axis
+            }
 
-        // Apply the movement to the rigidbody
-        rb.MovePosition(transform.position + movement);
+        }
+    }
+    private void ClampRotation()
+    {
+        Vector3 currentRotation = transform.localEulerAngles;
+        currentRotation.y = Mathf.Clamp(currentRotation.y, minRotation, maxRotation);
+        transform.localEulerAngles = currentRotation;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        gw.RunDummy();
+        Debug.Log("generate kar");
     }
 }
