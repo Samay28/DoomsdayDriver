@@ -977,6 +977,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: long_road_two_pavement (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5287032672739555479, guid: 354a9d816e45fc042a35d827813bda0a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8055041741012587041, guid: 354a9d816e45fc042a35d827813bda0a,
         type: 3}
       propertyPath: m_RootOrder
