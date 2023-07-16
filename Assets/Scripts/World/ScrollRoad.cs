@@ -5,14 +5,16 @@ using UnityEngine;
 public class ScrollRoad : MonoBehaviour
 {
     public static float speed = -0.2f;
-    // Start is called before the first frame update
     private void FixedUpdate()
     {
         // if (GameManager.isDead)
         // {
         //     return;
         // }
-       StartScrolling();
+        if (!PlayerControler.IsCollided)
+            StartScrolling();
+        else
+            stopscroll();
 
     }
     public void stopscroll()
@@ -21,7 +23,7 @@ public class ScrollRoad : MonoBehaviour
     }
     public void StartScrolling()
     {
-         this.transform.position += PlayerControler.Player.transform.forward * speed;
+        this.transform.position += PlayerControler.Player.transform.forward * speed;
     }
 
 }

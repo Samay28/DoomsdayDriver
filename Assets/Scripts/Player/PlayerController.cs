@@ -9,13 +9,14 @@ public class PlayerControler : MonoBehaviour
     public static GameObject Player;
     Rigidbody rb;
     public static float movespeed;
-    [SerializeField] float speed = 20f;
+    [SerializeField] float speed = 40f;
     float dx;
     public static bool IsColidedObstacle = false;
     public GenerateW gw;
     public TextMeshProUGUI scoreText;
     [SerializeField] private float minRotation;
     [SerializeField] private float maxRotation;
+    public static bool IsCollided;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class PlayerControler : MonoBehaviour
         gw.RunDummy();
         gw.RunDummy();
         gw.RunDummy();
+        IsCollided = false;
     }
 
     private void FixedUpdate()
@@ -56,5 +58,9 @@ public class PlayerControler : MonoBehaviour
     {
         gw.RunDummy();
         Debug.Log("generate kar");
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        IsCollided = true;
     }
 }
