@@ -11,7 +11,7 @@ public class FallBuildings : MonoBehaviour
     [SerializeField] private bool IsRight = false;
     [SerializeField] private bool isLeft = false;
 
-    float xDirec = 0.0079f;
+    float xDirec = 0.0089f;
     private void Start()
     {
         // Save the initial position and rotation
@@ -49,9 +49,9 @@ public class FallBuildings : MonoBehaviour
             Quaternion interpolatedRotation = Quaternion.LerpUnclamped(initialRotation, targetQuaternion, t);
             transform.rotation = interpolatedRotation;
 
-            // // Make the building fall from its pivot
-            // float fallSpeed = 10f; // Adjust the falling speed as needed
-            // transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
+            // Make the building fall from its pivot
+            float fallSpeed = 10f; // Adjust the falling speed as needed
+            transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
 
         }
     }

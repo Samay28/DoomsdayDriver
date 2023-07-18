@@ -24,9 +24,6 @@ public class PlayerControler : MonoBehaviour
         Player = this.gameObject;
         rb = GetComponent<Rigidbody>();
         gw.RunDummy();
-        gw.RunDummy();
-        gw.RunDummy();
-        gw.RunDummy();
         IsCollided = false;
     }
 
@@ -58,6 +55,7 @@ public class PlayerControler : MonoBehaviour
     {
         gw.RunDummy();
         Debug.Log("generate kar");
+        GameManager.score++;
     }
     private void OnCollisionEnter(Collision other)
     {
