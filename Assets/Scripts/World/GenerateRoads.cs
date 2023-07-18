@@ -22,7 +22,7 @@ public class GenerateW : MonoBehaviour
 
         if (LastPlatform != null)
         {
-            Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66.5f);
+            Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66f);
             dummyTraveller.transform.position = spawnPosition;
 
         }

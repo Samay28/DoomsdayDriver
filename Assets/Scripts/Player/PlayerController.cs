@@ -13,9 +13,6 @@ public class PlayerControler : MonoBehaviour
     float dx;
     public static bool IsColidedObstacle = false;
     public GenerateW gw;
-    public TextMeshProUGUI scoreText;
-    [SerializeField] private float minRotation;
-    [SerializeField] private float maxRotation;
     public static bool IsCollided;
 
     // Start is called before the first frame update
@@ -35,21 +32,21 @@ public class PlayerControler : MonoBehaviour
 
             if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
             {
-                transform.Rotate(0f, -speed * Time.deltaTime, 0f); // Rotate the object counterclockwise around its Y-axis
+                transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
             }
             else
             {
-                transform.Rotate(0f, speed * Time.deltaTime, 0f); // Rotate the object clockwise around its Y-axis
+                transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
             }
-
         }
+
     }
-    private void ClampRotation()
-    {
-        Vector3 currentRotation = transform.localEulerAngles;
-        currentRotation.y = Mathf.Clamp(currentRotation.y, minRotation, maxRotation);
-        transform.localEulerAngles = currentRotation;
-    }
+    // private void ClampRotation()
+    // {
+    //     Vector3 currentRotation = transform.localEulerAngles;
+    //     currentRotation.y = Mathf.Clamp(currentRotation.y, minRotation, maxRotation);
+    //     transform.localEulerAngles = currentRotation;
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
