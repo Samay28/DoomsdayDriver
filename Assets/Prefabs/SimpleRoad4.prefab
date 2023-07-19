@@ -1553,6 +1553,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6486156, guid: 0d41f7c400e70b14784c7dc6996384f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1587,12 +1591,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.022301, y: 17.473959, z: 8.262367}
-  m_Center: {x: -0.0046287267, y: 8.734448, z: 0.000942094}
+  m_Size: {x: 8.022301, y: 14.038634, z: 8.262367}
+  m_Center: {x: -0.0046287267, y: 7.0167856, z: 0.00094209396}
 --- !u!114 &773124163764194829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2260,6 +2264,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456278, guid: edfc85d2272c60b49beb757027f79980, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6456278, guid: edfc85d2272c60b49beb757027f79980, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2294,12 +2306,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.55283, y: 14.228978, z: 6.8053994}
-  m_Center: {x: 0.1507565, y: 7.114372, z: 0.00837837}
+  m_Size: {x: 9.55283, y: 11.836383, z: 6.8053994}
+  m_Center: {x: 0.1507565, y: 5.9180746, z: 0.00837837}
 --- !u!114 &6273679731668885056
 MonoBehaviour:
   m_ObjectHideFlags: 0

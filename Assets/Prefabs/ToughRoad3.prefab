@@ -722,6 +722,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456278, guid: edfc85d2272c60b49beb757027f79980, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -771,12 +775,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.55283, y: 14.01663, z: 6.8053994}
-  m_Center: {x: 0.15075617, y: 7.0081935, z: 0.00837837}
+  m_Size: {x: 9.55283, y: 11.729882, z: 6.8053994}
+  m_Center: {x: 0.15075617, y: 5.86482, z: 0.00837837}
 --- !u!4 &1601070184775569895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 497062, guid: edfc85d2272c60b49beb757027f79980,
@@ -2553,6 +2557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6486156, guid: 0d41f7c400e70b14784c7dc6996384f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2593,12 +2601,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.022301, y: 16.254559, z: 8.262367}
-  m_Center: {x: -0.004629067, y: 8.124748, z: 0.000942094}
+  m_Size: {x: 8.022301, y: 14.007002, z: 8.262367}
+  m_Center: {x: -0.004629067, y: 7.0009694, z: 0.000942094}
 --- !u!114 &6861475117599024222
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1359,6 +1359,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6432132, guid: 376c64c4248da1c478df047404ec6663, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1399,12 +1403,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.022301, y: 13.270689, z: 8.262367}
-  m_Center: {x: -0.0046277046, y: 6.6324234, z: 0.0009724073}
+  m_Size: {x: 8.022301, y: 9.536691, z: 8.262367}
+  m_Center: {x: -0.0046277046, y: 4.7654233, z: 0.00097240723}
 --- !u!114 &3368706435017936782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,8 +1944,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.55283, y: 10.359874, z: 6.8053994}
-  m_Center: {x: 0.1507599, y: 5.179851, z: 0.008393016}
+  m_Size: {x: 9.55283, y: 9.848731, z: 6.8053994}
+  m_Center: {x: 0.1507599, y: 4.9242797, z: 0.008393015}
 --- !u!4 &5629955013916151753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431098, guid: 30e2a587c4604ce43802c7a63b6638ed,
@@ -2257,6 +2261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6456278, guid: edfc85d2272c60b49beb757027f79980, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2291,7 +2299,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

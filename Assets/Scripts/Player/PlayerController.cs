@@ -61,13 +61,14 @@ public class PlayerControler : MonoBehaviour
             GameManager.score++;
             Debug.Log("Pickedup");
         }
-    }
-    private void OnCollisionEnter(Collision other)
-    {
         if (other.gameObject.CompareTag("Building"))
         {
             IsCollided = true;
             Debug.Log("Takra gye");
         }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        
     }
 }

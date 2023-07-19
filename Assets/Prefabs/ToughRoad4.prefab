@@ -687,6 +687,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6486156, guid: 0d41f7c400e70b14784c7dc6996384f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -721,12 +725,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.022301, y: 16.60062, z: 8.262367}
-  m_Center: {x: -0.004627364, y: 8.297779, z: 0.000942094}
+  m_Size: {x: 8.022301, y: 14.183895, z: 8.262367}
+  m_Center: {x: -0.004627364, y: 7.089416, z: 0.000942094}
 --- !u!114 &6399372566873937337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,6 +1730,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6470240, guid: 6d7985f8534d19e4b8c5bc52a92a075a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1766,12 +1774,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.55283, y: 13.524501, z: 6.8053994}
-  m_Center: {x: 0.1507599, y: 6.7621403, z: 0.0083936965}
+  m_Size: {x: 9.55283, y: 11.985531, z: 6.8053994}
+  m_Center: {x: 0.1507599, y: 5.9926553, z: 0.0083936965}
 --- !u!114 &6288280605578281441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,6 +2142,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6427106, guid: 4de73b6418e85f643bcd3c2edb0dfe0c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6470018, guid: 4de73b6418e85f643bcd3c2edb0dfe0c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2189,12 +2205,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.552829, y: 11.446332, z: 7.376964}
-  m_Center: {x: 0.1507582, y: 5.7235026, z: 0.008378029}
+  m_Size: {x: 9.552829, y: 10.139181, z: 7.376964}
+  m_Center: {x: 0.1507582, y: 5.0699263, z: 0.008378029}
 --- !u!1001 &6815337899674211962
 PrefabInstance:
   m_ObjectHideFlags: 0
