@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2970977923384260329}
   - component: {fileID: 1362285292853123043}
   m_Layer: 0
-  m_Name: long_road_two_pavement
+  m_Name: Tough Road 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -913,7 +913,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRotation: {x: 0, y: 180, z: -90}
-  duration: 2
   IsRight: 1
   isLeft: 0
 --- !u!65 &4267988640249086291
@@ -1581,7 +1580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRotation: {x: 0, y: 0, z: -90}
-  duration: 2
   IsRight: 0
   isLeft: 1
 --- !u!1001 &4258827290457215131
@@ -1693,7 +1691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRotation: {x: 0, y: 0, z: -90}
-  duration: 2
   IsRight: 0
   isLeft: 1
 --- !u!4 &4258827290457657829 stripped

@@ -3,7 +3,7 @@ using UnityEngine;
 public class FallBuildings : MonoBehaviour
 {
     public Vector3 targetRotation; // The target rotation in Euler angles
-    public float duration = 1f; // Time in seconds for the transformation
+    float duration = 2f; // Time in seconds for the transformation
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     private float timer = 0f;

@@ -16,25 +16,44 @@ public class GenerateW : MonoBehaviour
 
     public void RunDummy()
     {
-
-        GameObject p = ObjectPool.instance.GetRandom();
-        if (p == null) return;
-
-        if (LastPlatform != null)
+        if (GameManager.score <= 20)
         {
-            Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66f);
-            dummyTraveller.transform.position = spawnPosition;
+            GameObject p = ObjectPool.instance.GetRandom();
+            if (p == null) return;
 
+            if (LastPlatform != null)
+            {
+                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66f);
+                dummyTraveller.transform.position = spawnPosition;
+
+            }
+            LastPlatform = p;
+            p.SetActive(true);
+            p.transform.position = dummyTraveller.transform.position;
+            p.transform.rotation = dummyTraveller.transform.rotation;
         }
-        LastPlatform = p;
-        p.SetActive(true);
-        p.transform.position = dummyTraveller.transform.position;
-        p.transform.rotation = dummyTraveller.transform.rotation;
+        else if (GameManager.score > 20)
+        {
+            GameObject p = ObjectPool2.instance.GetRandom();
+            if (p == null) return;
+
+            if (LastPlatform != null)
+            {
+                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66f);
+                dummyTraveller.transform.position = spawnPosition;
+
+            }
+            LastPlatform = p;
+            p.SetActive(true);
+            p.transform.position = dummyTraveller.transform.position;
+            p.transform.rotation = dummyTraveller.transform.rotation;
+        }
     }
-    // void SetInActivePanel()
-    // {
-    //     panel.SetActive(false);
-    // }
-
-
 }
+// void SetInActivePanel()
+// {
+//     panel.SetActive(false);
+// }
+
+
+

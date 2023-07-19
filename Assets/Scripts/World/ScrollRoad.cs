@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollRoad : MonoBehaviour
 {
-    public static float speed = -0.2f;
+    public static float speed = -0.22f;
     private void FixedUpdate()
     {
         // if (GameManager.isDead)

@@ -26,19 +26,20 @@ public class PlayerControler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Time.timeScale = 1f;
+        if (!IsCollided)
+            if (Input.GetMouseButton(0))
+            {
+                Time.timeScale = 1f;
 
-            if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
-            {
-                transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
+                if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
+                {
+                    transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
+                }
+                else
+                {
+                    transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
+                }
             }
-            else
-            {
-                transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
-            }
-        }
 
     }
     // private void ClampRotation()
@@ -53,9 +54,20 @@ public class PlayerControler : MonoBehaviour
         gw.RunDummy();
         Debug.Log("generate kar");
         GameManager.score++;
+
+        if (other.gameObject.CompareTag("Human"))
+        {
+            other.gameObject.SetActive(false);
+            GameManager.score++;
+            Debug.Log("Pickedup");
+        }
     }
     private void OnCollisionEnter(Collision other)
     {
-        IsCollided = true;
+        if (other.gameObject.CompareTag("Building"))
+        {
+            IsCollided = true;
+            Debug.Log("Takra gye");
+        }
     }
 }
