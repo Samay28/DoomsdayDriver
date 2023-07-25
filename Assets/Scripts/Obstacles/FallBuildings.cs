@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class FallBuildings : MonoBehaviour
-{
+{   
+    [SerializeField] private BoxCollider boxColl;
     public Vector3 targetRotation; // The target rotation in Euler angles
     float duration = 2f; // Time in seconds for the transformation
     private Vector3 initialPosition;
@@ -17,9 +18,22 @@ public class FallBuildings : MonoBehaviour
         // Save the initial position and rotation
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+        boxColl = GetComponent<BoxCollider>();
+
+        // MeshCollider meshCollider = GetComponent<MeshCollider>();
+        // if (meshCollider != null)
+        // {
+        //     // Set the Mesh Collider's convex property to true
+        //     meshCollider.convex = true;
+
+        //     // Optionally, update the Mesh Collider's sharedMesh to match the building's mesh
+        //     meshCollider.sharedMesh = GetComponent<MeshFilter>().mesh;
+            
+        // }
+        boxColl.enabled = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (timer < duration)
         {
@@ -35,6 +49,7 @@ public class FallBuildings : MonoBehaviour
                     Mathf.Lerp(initialPosition.y, initialPosition.y + 0.0179f, t),
                     transform.position.z + (ScrollRoad.speed * Time.deltaTime)
                 );
+                
             }
             if (isLeft)
             {
@@ -52,7 +67,9 @@ public class FallBuildings : MonoBehaviour
             // Make the building fall from its pivot
             float fallSpeed = 10f; // Adjust the falling speed as needed
             transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
-
+            
         }
+        else
+        boxColl.enabled = true;
     }
 }

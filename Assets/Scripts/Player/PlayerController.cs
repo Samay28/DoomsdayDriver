@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerControler : MonoBehaviour
 {
+    public ScreenShaking ss;
     public static GameObject Player;
     Rigidbody rb;
     public static float movespeed;
@@ -51,24 +52,29 @@ public class PlayerControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gw.RunDummy();
-        Debug.Log("generate kar");
-        GameManager.score++;
+        if (!other.gameObject.CompareTag("Building"))
+        {
+            gw.RunDummy();
+            Debug.Log("generate kar");
+            GameManager.score++;
+        }
 
         if (other.gameObject.CompareTag("Human"))
         {
             other.gameObject.SetActive(false);
             GameManager.score++;
             Debug.Log("Pickedup");
+            GameManager.instance.UpdateDiamonds();
         }
         if (other.gameObject.CompareTag("Building"))
         {
             IsCollided = true;
             Debug.Log("Takra gye");
+            ss.StartShake();
         }
     }
     private void OnCollisionEnter(Collision other)
     {
-        
+
     }
 }
