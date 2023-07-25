@@ -11,7 +11,7 @@ public class DeactivateRoad : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.tag=="Player")
         {   
             Debug.Log("he");
             Invoke("SetInactive", 5.0f);

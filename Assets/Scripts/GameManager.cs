@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public static int score = 0;
     [SerializeField] TextMeshProUGUI[] ScoreText;
     [SerializeField] public int Diamonds;
-    [SerializeField] Text[] Diamondtxt;
+    [SerializeField] Text Diamondtxt;
+    [SerializeField] int DiamondsCollected;
+    [SerializeField] Text CurrentDiamondTxt;
     [SerializeField] public int HighScore;
+    bool isCalled;
 
     private void Awake()
     {
@@ -25,22 +28,21 @@ public class GameManager : MonoBehaviour
         }
         Diamonds = 0;
         HighScore = PlayerPrefs.GetInt("highscore", 0);
+        DiamondsCollected = 0;
+        isCalled = false;
 
 
         if (PlayerPrefs.HasKey("diamonds"))
         {
             Diamonds = PlayerPrefs.GetInt("diamonds");
-            for (int i = 0; i < Diamondtxt.Length; i++)
-            {
-                Diamondtxt[i].text = Diamonds.ToString();
-            }
+            Diamondtxt.text = Diamonds.ToString();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < Diamondtxt.Length; i++)
+        for (int i = 0; i < ScoreText.Length; i++)
         {
             ScoreText[i].text = score.ToString();
         }
@@ -54,6 +56,11 @@ public class GameManager : MonoBehaviour
         }
         UpdateHighscore();
 
+
+        if (PlayerControler.IsCollided && !isCalled)
+        {
+            TotalDiamonds();
+        }
     }
 
     public void UpdateHighscore()
@@ -67,12 +74,15 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateDiamonds()
     {
-        Diamonds++;
-        for (int i = 0; i < Diamondtxt.Length; i++)
-        {
-            Diamondtxt[i].text = Diamonds.ToString();
-        }
+        DiamondsCollected++;
+        CurrentDiamondTxt.text = DiamondsCollected.ToString();
+    }
+    public void TotalDiamonds()
+    {
+        Diamonds = Diamonds + DiamondsCollected;
+        Diamondtxt.text = Diamonds.ToString();
         PlayerPrefs.SetInt("diamonds", Diamonds);
+        isCalled = true;
     }
 
 }
