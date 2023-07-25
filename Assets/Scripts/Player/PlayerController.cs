@@ -20,6 +20,7 @@ public class PlayerControler : MonoBehaviour
     public AudioSource Collected;
     public AudioSource Music;
     public AudioSource GameOverAudio;
+    public static bool DisableCol;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class PlayerControler : MonoBehaviour
         gw.RunDummy();
         IsCollided = false;
         Music.Play();
+        DisableCol = false;
     }
 
     private void FixedUpdate()
@@ -76,7 +78,7 @@ public class PlayerControler : MonoBehaviour
             GameManager.instance.UpdateDiamonds();
             Collected.Play();
         }
-        if (other.gameObject.CompareTag("Building"))
+        if (other.gameObject.CompareTag("Building") && !DisableCol)
         {
             IsCollided = true;
             Debug.Log("Takra gye");
