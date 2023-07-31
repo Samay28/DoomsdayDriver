@@ -9,6 +9,11 @@ public class MainMenuManager : MonoBehaviour
     AsyncOperation loadingOperation;
     public TextMeshProUGUI highscoretxt;
     public TextMeshProUGUI diamondtxt;
+    int count;
+
+    public GameObject TutorialPanel;
+    public GameObject MainUI;
+    public TutorialManager Tm;
     void Start()
     {
         StartCoroutine(LoadSceneAsync());
@@ -24,6 +29,12 @@ public class MainMenuManager : MonoBehaviour
             GameManager.instance.Diamonds = PlayerPrefs.GetInt("diamonds");
             diamondtxt.text = GameManager.instance.Diamonds.ToString();
         }
+        if (PlayerPrefs.HasKey("count"))
+        {
+            count = PlayerPrefs.GetInt("count", 0);
+        }
+        Tm.enabled = false;
+        MainUI.SetActive(true);
     }
 
     // Update is called once per frame
@@ -43,7 +54,19 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        if (count == 0)
+        {
+            MainUI.SetActive(false);
+            TutorialPanel.SetActive(true);
+            Tm.ShowCurrentPanel();
+            Tm.enabled = true;
+            count++;
+            PlayerPrefs.SetInt("count", count);
+        }
+
+        else
+            SceneManager.LoadScene(1);
+
     }
     public void QuitGame()
     {

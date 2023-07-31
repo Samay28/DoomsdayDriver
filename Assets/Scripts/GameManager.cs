@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] ScoreText;
     [SerializeField] public int Diamonds;
     [SerializeField] Text Diamondtxt;
-    [SerializeField] int DiamondsCollected;
+    [SerializeField] public int DiamondsCollected;
     [SerializeField] Text CurrentDiamondTxt;
     [SerializeField] public int HighScore;
     bool isCalled;
@@ -55,12 +55,12 @@ public class GameManager : MonoBehaviour
             Diamonds = PlayerPrefs.GetInt("diamonds");
         }
         UpdateHighscore();
+        UpdateCurrentDiamondsText();
 
-
-        if (PlayerControler.IsCollided && !isCalled)
-        {
-            TotalDiamonds();
-        }
+        // if (PlayerControler.IsCollided && !isCalled)
+        // {
+        //     TotalDiamonds();
+        // }
     }
 
     public void UpdateHighscore()
@@ -83,6 +83,16 @@ public class GameManager : MonoBehaviour
         Diamondtxt.text = Diamonds.ToString();
         PlayerPrefs.SetInt("diamonds", Diamonds);
         isCalled = true;
+    }
+    public void UpdateCurrentDiamondsText()
+    {   
+        if(CurrentDiamondTxt!=null)
+        CurrentDiamondTxt.text = DiamondsCollected.ToString();
+    }
+     public void UpdateDiamondsText()
+    {   
+        if(Diamondtxt!=null)
+        Diamondtxt.text = Diamonds.ToString();
     }
 
 }

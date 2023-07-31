@@ -9,7 +9,8 @@ public class ButtonManager : MonoBehaviour
     public GameObject GameoverPanel;
     public GameObject PausePanel;
     public GameObject MainPanel;
-    [SerializeField] int DiamondsReqToSpawn = 1;
+    [SerializeField] int DiamondsReqToSpawn = 5;
+    public AudioSource Musc;
     void Start()
     {
         GameoverPanel.SetActive(false);
@@ -28,7 +29,8 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
     public void MainMenu()
-    {
+    {   
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
     public void ShowGameOver()
@@ -58,6 +60,11 @@ public class ButtonManager : MonoBehaviour
 
             GameManager.instance.Diamonds = GameManager.instance.Diamonds - DiamondsReqToSpawn;
             PlayerPrefs.SetInt("diamonds", GameManager.instance.Diamonds);
+            GameManager.instance.UpdateDiamondsText();
+
+            if(GameManager.instance.DiamondsCollected!=0)
+            Musc.Play();
+            GameManager.instance.DiamondsCollected = 0;
         }
         else
             return;

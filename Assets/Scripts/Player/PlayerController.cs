@@ -67,12 +67,12 @@ public class PlayerControler : MonoBehaviour
             gw.RunDummy();
             Debug.Log("generate kar");
             GameManager.score++;
-            
+
         }
 
         if (other.gameObject.CompareTag("Human"))
         {
-            other.gameObject.SetActive(false);
+            StartCoroutine(HumanActivation());
             GameManager.score++;
             Debug.Log("Pickedup");
             GameManager.instance.UpdateDiamonds();
@@ -86,10 +86,25 @@ public class PlayerControler : MonoBehaviour
             Crashed.Play();
             Music.Stop();
             GameOverAudio.Play();
+            GameManager.instance.TotalDiamonds();
         }
     }
     private void OnCollisionEnter(Collision other)
     {
+
+    }
+    IEnumerator HumanActivation()
+    {
+        GameObject[] human = GameObject.FindGameObjectsWithTag("Human");
+        foreach (GameObject obj in human)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(1);
+         foreach (GameObject obj in human)
+        {
+            obj.SetActive(true);
+        }
 
     }
 }
