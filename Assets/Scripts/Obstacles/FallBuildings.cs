@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class FallBuildings : MonoBehaviour
-{   
+{
     [SerializeField] private BoxCollider boxColl;
     public Vector3 targetRotation; // The target rotation in Euler angles
     float duration = 2f; // Time in seconds for the transformation
@@ -28,12 +28,12 @@ public class FallBuildings : MonoBehaviour
 
         //     // Optionally, update the Mesh Collider's sharedMesh to match the building's mesh
         //     meshCollider.sharedMesh = GetComponent<MeshFilter>().mesh;
-            
+
         // }
         boxColl.enabled = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (timer < duration)
         {
@@ -47,16 +47,16 @@ public class FallBuildings : MonoBehaviour
                 transform.position = new Vector3(
                     Mathf.Lerp(initialPosition.x, initialPosition.x - xDirec, t),
                     Mathf.Lerp(initialPosition.y, initialPosition.y + 0.0179f, t),
-                    transform.position.z + (ScrollRoad.speed * Time.deltaTime)
+                    transform.position.z // Do not add ScrollRoad.speed * Time.deltaTime here
                 );
-                
+
             }
             if (isLeft)
             {
                 transform.position = new Vector3(
                     Mathf.Lerp(initialPosition.x, initialPosition.x + xDirec, t),
                     Mathf.Lerp(initialPosition.y, initialPosition.y + 0.0179f, t),
-                    transform.position.z + (ScrollRoad.speed * Time.deltaTime)
+                    transform.position.z // Do not add ScrollRoad.speed * Time.deltaTime here
                 );
             }
 
@@ -65,11 +65,14 @@ public class FallBuildings : MonoBehaviour
             transform.rotation = interpolatedRotation;
 
             // Make the building fall from its pivot
-            float fallSpeed = 10f; // Adjust the falling speed as needed
+            float fallSpeed = 20f; // Adjust the falling speed as needed
             transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
-            
+
         }
         else
-        boxColl.enabled = true;
+        {
+            boxColl.enabled = true;
+        }
     }
+
 }

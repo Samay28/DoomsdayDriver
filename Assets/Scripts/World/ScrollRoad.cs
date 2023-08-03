@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScrollRoad : MonoBehaviour
 {
-    public static float speed = -0.30f;
-    private void FixedUpdate()
+    public static float speed = -15f;
+    private void Update()
     {
         // if (GameManager.isDead)
         // {
@@ -23,46 +23,46 @@ public class ScrollRoad : MonoBehaviour
     }
     public void StartScrolling()
     {
-        this.transform.position += PlayerControler.Player.transform.forward * speed;
-        DifficultyIncrease();
+        this.transform.position += PlayerControler.Player.transform.forward * speed *Time.deltaTime;
+        // DifficultyIncrease();
     }
     public void DifficultyIncrease()
     {   
         if (GameManager.score<=10)
         {
-            speed = -0.30f;
+            speed = -15f;
         }
         if (GameManager.score >= 10 && GameManager.score<=20)
         {
-            speed = -0.31f;
+            speed = -16;
         }
         else if (GameManager.score > 20 && GameManager.score<=30)
         {
-            speed = -0.32f;
+            speed = -17f;
         }
         else if (GameManager.score > 30 && GameManager.score<=40)
         {
-            speed = -0.33f;
+            speed = -18f;
         }
         else if (GameManager.score > 40 && GameManager.score<=50)
         {
-            speed = -0.34f;
+            speed = -19f;
         }
         else if (GameManager.score > 50 && GameManager.score<=60)
         {
-            speed = -0.35f;
+            speed = -20f;
         }
         else if (GameManager.score > 60 && GameManager.score<=70)
         {
-            speed = -0.36f;
+            speed = -216f;
         }
         else if (GameManager.score > 70 && GameManager.score<=80)
         {
-            speed = -0.37f;
+            speed = -22f;
         }
         else if (GameManager.score > 80)
         {
-            speed = -0.38f;
+            speed = -23f;
         }
 
     }
