@@ -26,7 +26,7 @@ public class MainMenuManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("diamonds"))
         {
-            GameManager.instance.Diamonds = PlayerPrefs.GetInt("diamonds");
+            GameManager.instance.Diamonds = PlayerPrefs.GetInt("diamonds", 0);
             diamondtxt.text = GameManager.instance.Diamonds.ToString();
         }
         if (PlayerPrefs.HasKey("count"))

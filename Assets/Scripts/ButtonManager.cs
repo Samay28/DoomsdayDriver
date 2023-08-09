@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
@@ -9,19 +10,30 @@ public class ButtonManager : MonoBehaviour
     public GameObject GameoverPanel;
     public GameObject PausePanel;
     public GameObject MainPanel;
-    [SerializeField] int DiamondsReqToSpawn = 5;
+    [SerializeField]  int DiamondsReqToSpawn = 5;
+    public Text DiamondsReqTxt;
     public AudioSource Musc;
+    public int HowManyTimesCollided;
+    bool Called;
     void Start()
     {
         GameoverPanel.SetActive(false);
+        HowManyTimesCollided = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (PlayerControler.IsCollided)
-        {
+        {   
+            if(!Called)
+            {
+            HowManyTimesCollided++;
+            DiamondsReqToSpawn = DiamondsReqToSpawn * HowManyTimesCollided;
+            DiamondsReqTxt.text = DiamondsReqToSpawn.ToString();
             ShowGameOver();
+            Called = true;
+            }
         }
     }
     public void RestartGame()
@@ -65,6 +77,7 @@ public class ButtonManager : MonoBehaviour
             if(GameManager.instance.DiamondsCollected!=0)
             Musc.Play();
             GameManager.instance.DiamondsCollected = 0;
+            Called = false;
         }
         else
             return;
