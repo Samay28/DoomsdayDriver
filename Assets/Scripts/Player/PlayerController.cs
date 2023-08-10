@@ -78,6 +78,12 @@ public class PlayerControler : MonoBehaviour
             GameManager.instance.UpdateDiamonds();
             Collected.Play();
         }
+        if (other.gameObject.CompareTag("Can"))
+        {
+            StartCoroutine(JerryCanActivation());
+            Debug.Log("Fuel pickedup");
+            Collected.Play();
+        }
         if (other.gameObject.CompareTag("Building") && !DisableCol)
         {
             IsCollided = true;
@@ -102,6 +108,20 @@ public class PlayerControler : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
          foreach (GameObject obj in human)
+        {
+            obj.SetActive(true);
+        }
+
+    }
+    IEnumerator JerryCanActivation()
+    {
+        GameObject[] JerryCan = GameObject.FindGameObjectsWithTag("Can");
+        foreach (GameObject obj in JerryCan)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(1);
+         foreach (GameObject obj in JerryCan)
         {
             obj.SetActive(true);
         }
