@@ -16,17 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int HighScore;
     bool isCalled;
 
-    private void Awake()
-    {
-        score = 0;
-    }
     void Start()
     {
+        score = 0;
         if (instance == null)
         {
             instance = this;
         }
-        Diamonds = 0;
+        // Diamonds = 0;
         HighScore = PlayerPrefs.GetInt("highscore", 0);
         DiamondsCollected = 0;
         isCalled = false;
@@ -34,8 +31,13 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("diamonds"))
         {
-            Diamonds = PlayerPrefs.GetInt("diamonds");
-            Diamondtxt.text = Diamonds.ToString();
+            if (Diamondtxt != null)
+            {
+                Diamonds = PlayerPrefs.GetInt("diamonds");
+                Diamondtxt.text = Diamonds.ToString();
+            }
+            else 
+            return;
         }
     }
 
@@ -85,14 +87,14 @@ public class GameManager : MonoBehaviour
         isCalled = true;
     }
     public void UpdateCurrentDiamondsText()
-    {   
-        if(CurrentDiamondTxt!=null)
-        CurrentDiamondTxt.text = DiamondsCollected.ToString();
+    {
+        if (CurrentDiamondTxt != null)
+            CurrentDiamondTxt.text = DiamondsCollected.ToString();
     }
-     public void UpdateDiamondsText()
-    {   
-        if(Diamondtxt!=null)
-        Diamondtxt.text = Diamonds.ToString();
+    public void UpdateDiamondsText()
+    {
+        if (Diamondtxt != null)
+            Diamondtxt.text = Diamonds.ToString();
     }
 
 }
