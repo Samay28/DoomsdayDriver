@@ -21,6 +21,7 @@ public class PlayerControler : MonoBehaviour
     public AudioSource Music;
     public AudioSource GameOverAudio;
     public static bool DisableCol;
+    public FuelManager FuelSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,6 @@ public class PlayerControler : MonoBehaviour
             gw.RunDummy();
             Debug.Log("generate kar");
             GameManager.score++;
-
         }
 
         if (other.gameObject.CompareTag("Human"))
@@ -83,6 +83,7 @@ public class PlayerControler : MonoBehaviour
             StartCoroutine(JerryCanActivation());
             Debug.Log("Fuel pickedup");
             Collected.Play();
+            FuelSystem.IncreaseFuel();
         }
         if (other.gameObject.CompareTag("Building") && !DisableCol)
         {
