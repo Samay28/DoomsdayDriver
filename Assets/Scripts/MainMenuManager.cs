@@ -78,4 +78,8 @@ public class MainMenuManager : MonoBehaviour
         loadingOperation.allowSceneActivation = false;
         yield return null;
     }
+    public void RateOnPlayStore()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.DoomsdayDriver.driverpath");
+    }
 }

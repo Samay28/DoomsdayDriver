@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 public class FuelManager : MonoBehaviour
 {
     public float TotalFuel = 100.0f;
@@ -10,6 +11,8 @@ public class FuelManager : MonoBehaviour
     bool Called;
     public static bool FuelOver;
     private float timeSinceLastDecrease = 0.0f;
+    public Slider FuelSlider;
+    public FuelUI AlertTxt;
 
     private void Start()
     {
@@ -29,18 +32,20 @@ public class FuelManager : MonoBehaviour
                 timeSinceLastDecrease = 0.0f;
             }
         }
-        if (GameManager.score >= 2 && !Called)
+        if (GameManager.score >= 24 && !Called)
         {
             StartFuelDecrease();
             Called = true;
             FuelPanel.SetActive(true);
+            AlertTxt.ShowAlert();
         }
     }
 
     private void DecreaseFuel()
     {
-        TotalFuel = TotalFuel + ScrollRoad.speed * 3 / 4;
+        TotalFuel = TotalFuel + ScrollRoad.speed * 2 / 4;
         Debug.Log(TotalFuel);
+        FuelSlider.value = TotalFuel;
 
         if (TotalFuel <= 0)
         {
@@ -62,5 +67,10 @@ public class FuelManager : MonoBehaviour
     {
         TotalFuel = TotalFuel + RefillRate;
         Debug.Log(TotalFuel);
+    }
+    public void ResetFuel()
+    {
+        TotalFuel = 100;
+        FuelSlider.value = TotalFuel;
     }
 }

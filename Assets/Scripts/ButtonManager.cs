@@ -15,6 +15,7 @@ public class ButtonManager : MonoBehaviour
     public AudioSource Musc;
     public int HowManyTimesCollided;
     bool Called;
+    public FuelManager fUEL;
     void Start()
     {
         GameoverPanel.SetActive(false);
@@ -24,7 +25,7 @@ public class ButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerControler.IsCollided)
+        if (PlayerControler.IsCollided || FuelManager.FuelOver)
         {   
             if(!Called)
             {
@@ -66,9 +67,12 @@ public class ButtonManager : MonoBehaviour
         if (GameManager.instance.Diamonds >= DiamondsReqToSpawn)
         {
             PlayerControler.IsCollided = false;
+            FuelManager.FuelOver = false;
+            fUEL.ResetFuel();
             GameoverPanel.SetActive(false);
             MainPanel.SetActive(true);
             StartCoroutine(disableCol());
+            fUEL.StartFuelDecrease();
 
             GameManager.instance.Diamonds = GameManager.instance.Diamonds - DiamondsReqToSpawn;
             PlayerPrefs.SetInt("diamonds", GameManager.instance.Diamonds);

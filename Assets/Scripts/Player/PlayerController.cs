@@ -36,7 +36,8 @@ public class PlayerControler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsCollided)
+        if (!IsCollided && !FuelManager.FuelOver)
+        {
             if (Input.GetMouseButton(0))
             {
                 Time.timeScale = 1f;
@@ -52,6 +53,9 @@ public class PlayerControler : MonoBehaviour
                     Move.Play();
                 }
             }
+        }
+        else
+        return;
 
     }
     // private void ClampRotation()
@@ -108,7 +112,7 @@ public class PlayerControler : MonoBehaviour
             obj.SetActive(false);
         }
         yield return new WaitForSeconds(1);
-         foreach (GameObject obj in human)
+        foreach (GameObject obj in human)
         {
             obj.SetActive(true);
         }
@@ -122,7 +126,7 @@ public class PlayerControler : MonoBehaviour
             obj.SetActive(false);
         }
         yield return new WaitForSeconds(1);
-         foreach (GameObject obj in JerryCan)
+        foreach (GameObject obj in JerryCan)
         {
             obj.SetActive(true);
         }
