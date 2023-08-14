@@ -51,7 +51,7 @@ public class ScrollRoad : MonoBehaviour
         }
         else if (GameManager.score > 60 && GameManager.score <= 70)
         {
-            speed = -21f;
+            speed = -216f;
         }
         else if (GameManager.score > 70 && GameManager.score <= 80)
         {

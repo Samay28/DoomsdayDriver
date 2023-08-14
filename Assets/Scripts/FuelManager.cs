@@ -12,7 +12,6 @@ public class FuelManager : MonoBehaviour
     public static bool FuelOver;
     private float timeSinceLastDecrease = 0.0f;
     public Slider FuelSlider;
-    public FuelUI AlertTxt;
 
     private void Start()
     {
@@ -32,12 +31,11 @@ public class FuelManager : MonoBehaviour
                 timeSinceLastDecrease = 0.0f;
             }
         }
-        if (GameManager.score >= 24 && !Called)
+        if (!Called)
         {
             StartFuelDecrease();
             Called = true;
             FuelPanel.SetActive(true);
-            AlertTxt.ShowAlert();
         }
         TotalFuel = Mathf.Clamp(TotalFuel,0,100);
     }
