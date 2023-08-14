@@ -21,7 +21,7 @@ public class ScrollRoad : MonoBehaviour
     public void StartScrolling()
     {
         this.transform.position += PlayerControler.Player.transform.forward * speed * Time.deltaTime;
-        // DifficultyIncrease();
+        DifficultyIncrease();
     }
     public void DifficultyIncrease()
     {
@@ -51,7 +51,7 @@ public class ScrollRoad : MonoBehaviour
         }
         else if (GameManager.score > 60 && GameManager.score <= 70)
         {
-            speed = -216f;
+            speed = -21f;
         }
         else if (GameManager.score > 70 && GameManager.score <= 80)
         {

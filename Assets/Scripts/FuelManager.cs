@@ -39,6 +39,7 @@ public class FuelManager : MonoBehaviour
             FuelPanel.SetActive(true);
             AlertTxt.ShowAlert();
         }
+        TotalFuel = Mathf.Clamp(TotalFuel,0,100);
     }
 
     private void DecreaseFuel()
