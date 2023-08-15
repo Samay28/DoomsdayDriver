@@ -7,6 +7,7 @@ TagManager:
   - Human
   - Building
   - Can
+  - Roads
   layers:
   - Default
   - TransparentFX

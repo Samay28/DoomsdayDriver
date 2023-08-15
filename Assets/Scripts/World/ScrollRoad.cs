@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ScrollRoad : MonoBehaviour
 {
-    public static float speed = -15f;
+    public float speed = -15f;
     private void Update()
     {
-        if(PlayerControler.IsCollided || FuelManager.FuelOver)
+        if (PlayerControler.IsCollided || FuelManager.FuelOver)
         {
             stopscroll();
         }
         else
-        StartScrolling();
+            StartScrolling();
     }
     public void stopscroll()
     {

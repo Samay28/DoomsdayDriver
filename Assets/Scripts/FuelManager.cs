@@ -37,12 +37,22 @@ public class FuelManager : MonoBehaviour
             Called = true;
             FuelPanel.SetActive(true);
         }
-        TotalFuel = Mathf.Clamp(TotalFuel,0,100);
+        TotalFuel = Mathf.Clamp(TotalFuel, 0, 100);
     }
 
     private void DecreaseFuel()
     {
-        TotalFuel = TotalFuel + ScrollRoad.speed * 2 / 4;
+        GameObject[] roadObjects = GameObject.FindGameObjectsWithTag("Roads");
+
+        foreach (GameObject roadObject in roadObjects)
+        {
+            ScrollRoad road = roadObject.GetComponent<ScrollRoad>();
+            if (road != null)
+            {
+                TotalFuel = TotalFuel + road.speed * 1 / 10;
+                // Here you can access road.speed for each individual road instance
+            }
+        }
         Debug.Log(TotalFuel);
         FuelSlider.value = TotalFuel;
 
