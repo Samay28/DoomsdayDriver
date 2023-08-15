@@ -25,6 +25,8 @@ public class PlayerControler : MonoBehaviour
     public static bool DisableCol;
     public FuelManager FuelSystem;
     public BoostController BoostSystem;
+    public ParticleSystem BoostParticles1;
+    public ParticleSystem BoostParticles2;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +37,12 @@ public class PlayerControler : MonoBehaviour
         IsCollided = false;
         Music.Play();
         DisableCol = false;
+
+        BoostParticles1.Stop();
+        BoostParticles2.Stop();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!IsCollided && !FuelManager.FuelOver)
         {
@@ -46,32 +51,37 @@ public class PlayerControler : MonoBehaviour
                 Time.timeScale = 1f;
                 if (!EventSystem.current.currentSelectedGameObject)
                 {
-                    if (Input.touchCount == 2)
+                    if (Input.touchCount == 2 && BoostSystem.NosValue > 0)
                     {
-                        Debug.Log("Boooost");
                         BoostSystem.Nitro();
+                        BoostParticles1.Play();
+                        BoostParticles2.Play();
                     }
                     else
                     {
-                        if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
+                        if (BoostController.isBoosting)
                         {
-                            transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
-                            Move.Play();
+                            BoostController.isBoosting = false;
+                            BoostParticles1.Stop();
+                            BoostParticles2.Stop();
                         }
-                        else if (Input.mousePosition.x > Screen.width / 2)
+                        else
                         {
-                            transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
+                            if (Input.mousePosition.x < Screen.width / 2)
+                            {
+                                transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f);
+                                Move.Play();
+                            }
+                            else if (Input.mousePosition.x > Screen.width / 2)
+                            {
+                                transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f);
+                                Move.Play();
+                            }
                         }
-                        BoostSystem.isBoosting = false;
                     }
-
-                    Move.Play();
                 }
             }
         }
-
-
-
 
     }
     // private void ClampRotation()

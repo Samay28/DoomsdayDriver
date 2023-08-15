@@ -10,9 +10,10 @@ public class BoostController : MonoBehaviour
     public float SpeedMuliplier = 1.2f;
     public Slider NosSlider;
     int decreaseFactor = 2;
-    public bool isBoosting;
+    public static bool isBoosting;
     private float timeSinceLastIncrease = 0.0f;
-    public float DecreaseInterval = 1.0f;
+    private float timeSinceLastDecrease = 0.0f;
+    public float DecreaseInterval = 1.5f;
     void Start()
     {
 
@@ -20,11 +21,7 @@ public class BoostController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isBoosting)
         {
@@ -36,29 +33,39 @@ public class BoostController : MonoBehaviour
                 timeSinceLastIncrease = 0;
             }
         }
-        NosValue = Mathf.Clamp(NosValue,0,10);
+        NosValue = Mathf.Clamp(NosValue, 0, 10);
     }
-        public void Nitro()
+    public void Nitro()
+    {
+        if (NosValue != 0)
         {
-            if (NosValue > 0)
+            timeSinceLastDecrease += Time.deltaTime;
+            if (timeSinceLastDecrease >= 0.5f)
             {
                 GameObject[] roadObjects = GameObject.FindGameObjectsWithTag("Roads");
-                NosValue -= decreaseFactor;
-                NosSlider.value = NosValue;
                 foreach (GameObject roadObject in roadObjects)
                 {
                     ScrollRoad road = roadObject.GetComponent<ScrollRoad>();
                     if (road != null)
                     {
-                        road.speed = road.speed * 8.2f;
+                        // road.speed = -30f;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("road??");
                     }
                 }
+                Debug.Log("boosting");
+                NosValue -= decreaseFactor;
+                NosSlider.value = NosValue;
                 isBoosting = true;
+                timeSinceLastDecrease = 0;
             }
         }
-        public void IncreaseNos()
-        {
-            NosValue = NosValue + 1;
-            NosSlider.value = NosValue;
-        }
     }
+    public void IncreaseNos()
+    {
+        NosValue = NosValue + 1;
+        NosSlider.value = NosValue;
+    }
+}

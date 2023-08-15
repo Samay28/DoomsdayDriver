@@ -970,6 +970,16 @@ PrefabInstance:
       propertyPath: GameOverAudio
       value: 
       objectReference: {fileID: 2135811604}
+    - target: {fileID: 8971894312365450912, guid: d75f43f834177b847ab9b9b1e0de4487,
+        type: 3}
+      propertyPath: BoostParticles1
+      value: 
+      objectReference: {fileID: 707355529}
+    - target: {fileID: 8971894312365450912, guid: d75f43f834177b847ab9b9b1e0de4487,
+        type: 3}
+      propertyPath: BoostParticles2
+      value: 
+      objectReference: {fileID: 1190647027}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1194,6 +1204,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
         type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
@@ -1211,6 +1226,21 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4121091811529330619, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
         type: 3}
@@ -1358,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 1850159687454214702, guid: a81776c1902314641ab971b22e7c9312,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1850159687454214702, guid: a81776c1902314641ab971b22e7c9312,
         type: 3}
@@ -2085,7 +2115,6 @@ MonoBehaviour:
   NosValue: 10
   SpeedMuliplier: 1.2
   NosSlider: {fileID: 1652063055}
-  isBoosting: 0
   DecreaseInterval: 1
 --- !u!1 &562156207
 GameObject:
@@ -2404,6 +2433,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
         type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
@@ -2421,6 +2455,21 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4121091811529330619, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
         type: 3}
@@ -2505,6 +2554,12 @@ PrefabInstance:
 --- !u!4 &707355527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 707355526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &707355529 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
     type: 3}
   m_PrefabInstance: {fileID: 707355526}
   m_PrefabAsset: {fileID: 0}
@@ -3384,6 +3439,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 463188, guid: 7538a3c85f736c74ea56d203349fde92,
     type: 3}
   m_PrefabInstance: {fileID: 3390553780514828576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1190647027 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 348191641}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234391550
 GameObject:

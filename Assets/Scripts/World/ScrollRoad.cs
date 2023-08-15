@@ -13,6 +13,14 @@ public class ScrollRoad : MonoBehaviour
         }
         else
             StartScrolling();
+            if(BoostController.isBoosting)
+            {
+                speed = -30f;
+            }
+            else
+            {
+                speed = -15f;
+            }
     }
     public void stopscroll()
     {
@@ -21,10 +29,14 @@ public class ScrollRoad : MonoBehaviour
     public void StartScrolling()
     {
         this.transform.position += PlayerControler.Player.transform.forward * speed * Time.deltaTime;
-        DifficultyIncrease();
+        if(!BoostController.isBoosting)
+        {
+            DifficultyIncrease();
+        }
+
     }
     public void DifficultyIncrease()
-    {
+    {   
         if (GameManager.score <= 10)
         {
             speed = -15f;
