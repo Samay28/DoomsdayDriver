@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using System.Net.Http.Headers;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -51,37 +51,41 @@ public class PlayerControler : MonoBehaviour
                 Time.timeScale = 1f;
                 if (!EventSystem.current.currentSelectedGameObject)
                 {
-                    if (Input.touchCount == 2 && BoostSystem.NosValue > 0)
+                    if (Input.touchCount == 2)
                     {
                         BoostSystem.Nitro();
                         BoostParticles1.Play();
                         BoostParticles2.Play();
                     }
-                    else
+                    else if (Input.touchCount == 1)
                     {
-                        if (BoostController.isBoosting)
+                        BoostController.isBoosting = false;
+                        if (Input.mousePosition.x < Screen.width / 2)
                         {
-                            BoostController.isBoosting = false;
-                            BoostParticles1.Stop();
-                            BoostParticles2.Stop();
+                            transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f);
+                            Move.Play();
                         }
-                        else
+                        else if (Input.mousePosition.x > Screen.width / 2)
                         {
-                            if (Input.mousePosition.x < Screen.width / 2)
-                            {
-                                transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f);
-                                Move.Play();
-                            }
-                            else if (Input.mousePosition.x > Screen.width / 2)
-                            {
-                                transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f);
-                                Move.Play();
-                            }
+                            transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f);
+                            Move.Play();
                         }
+
                     }
+                    else
+                    BoostController.isBoosting = false;
+
                 }
             }
+            
         }
+
+        if (!BoostController.isBoosting)
+        {
+            BoostParticles1.Stop();
+            BoostParticles2.Stop();
+        }
+
 
     }
     // private void ClampRotation()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollRoad : MonoBehaviour
 {
     public float speed = -15f;
+    public float currentSpeed;
     private void Update()
     {
         if (PlayerControler.IsCollided || FuelManager.FuelOver)
@@ -12,15 +13,10 @@ public class ScrollRoad : MonoBehaviour
             stopscroll();
         }
         else
+        {
             StartScrolling();
-            if(BoostController.isBoosting)
-            {
-                speed = -30f;
-            }
-            else
-            {
-                speed = -15f;
-            }
+
+        }
     }
     public void stopscroll()
     {
@@ -29,49 +25,56 @@ public class ScrollRoad : MonoBehaviour
     public void StartScrolling()
     {
         this.transform.position += PlayerControler.Player.transform.forward * speed * Time.deltaTime;
-        if(!BoostController.isBoosting)
+        if (BoostController.isBoosting)
         {
+            speed = -30f;
+            Debug.Log("boost");
+        }
+        else if (!BoostController.isBoosting)
+        {
+            speed = currentSpeed;
             DifficultyIncrease();
+            Debug.Log("notboost");
         }
 
     }
     public void DifficultyIncrease()
-    {   
+    {
         if (GameManager.score <= 10)
         {
-            speed = -15f;
+            currentSpeed = -15f;
         }
         if (GameManager.score >= 10 && GameManager.score <= 20)
         {
-            speed = -16;
+            currentSpeed = -16;
         }
         else if (GameManager.score > 20 && GameManager.score <= 30)
         {
-            speed = -17f;
+            currentSpeed = -17f;
         }
         else if (GameManager.score > 30 && GameManager.score <= 40)
         {
-            speed = -18f;
+            currentSpeed = -18f;
         }
         else if (GameManager.score > 40 && GameManager.score <= 50)
         {
-            speed = -19f;
+            currentSpeed = -19f;
         }
         else if (GameManager.score > 50 && GameManager.score <= 60)
         {
-            speed = -20f;
+            currentSpeed = -20f;
         }
         else if (GameManager.score > 60 && GameManager.score <= 70)
         {
-            speed = -21f;
+            currentSpeed = -21f;
         }
         else if (GameManager.score > 70 && GameManager.score <= 80)
         {
-            speed = -22f;
+            currentSpeed = -22f;
         }
         else if (GameManager.score > 80)
         {
-            speed = -23f;
+            currentSpeed = -23f;
         }
 
     }

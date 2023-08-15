@@ -37,31 +37,20 @@ public class BoostController : MonoBehaviour
     }
     public void Nitro()
     {
-        if (NosValue != 0)
+        if (NosValue > 0)
         {
             timeSinceLastDecrease += Time.deltaTime;
             if (timeSinceLastDecrease >= 0.5f)
             {
-                GameObject[] roadObjects = GameObject.FindGameObjectsWithTag("Roads");
-                foreach (GameObject roadObject in roadObjects)
-                {
-                    ScrollRoad road = roadObject.GetComponent<ScrollRoad>();
-                    if (road != null)
-                    {
-                        // road.speed = -30f;
-                    }
-                    else
-                    {
-                        Debug.LogWarning("road??");
-                    }
-                }
                 Debug.Log("boosting");
                 NosValue -= decreaseFactor;
                 NosSlider.value = NosValue;
-                isBoosting = true;
                 timeSinceLastDecrease = 0;
             }
+            isBoosting = true;
         }
+        else
+            isBoosting = false;
     }
     public void IncreaseNos()
     {
