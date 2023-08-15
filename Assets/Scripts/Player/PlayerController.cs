@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class PlayerControler : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class PlayerControler : MonoBehaviour
     public AudioSource GameOverAudio;
     public static bool DisableCol;
     public FuelManager FuelSystem;
+    public BoostController BoostSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -41,21 +44,34 @@ public class PlayerControler : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Time.timeScale = 1f;
+                if (!EventSystem.current.currentSelectedGameObject)
+                {
+                    if (Input.touchCount == 2)
+                    {
+                        Debug.Log("Boooost");
+                        BoostSystem.Nitro();
+                    }
+                    else
+                    {
+                        if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
+                        {
+                            transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
+                            Move.Play();
+                        }
+                        else if (Input.mousePosition.x > Screen.width / 2)
+                        {
+                            transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
+                        }
+                        BoostSystem.isBoosting = false;
+                    }
 
-                if (Input.mousePosition.x < Screen.width / 2) // Pressing the left side of the screen
-                {
-                    transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f); // Move the object to the left along the x-axis
-                    Move.Play();
-                }
-                else
-                {
-                    transform.position += new Vector3(speed * Time.deltaTime, 0f, 0f); // Move the object to the right along the x-axis
                     Move.Play();
                 }
             }
         }
-        else
-        return;
+
+
+
 
     }
     // private void ClampRotation()
@@ -67,7 +83,7 @@ public class PlayerControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Building") && !other.gameObject.CompareTag("Human"))
+        if (!other.gameObject.CompareTag("Building") && !other.gameObject.CompareTag("Human") && !other.gameObject.CompareTag("Can"))
         {
             gw.RunDummy();
             Debug.Log("generate kar");
