@@ -42,7 +42,7 @@ public class PlayerControler : MonoBehaviour
         BoostParticles2.Stop();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!IsCollided && !FuelManager.FuelOver)
         {

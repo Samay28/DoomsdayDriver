@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI highscoretxt;
     public TextMeshProUGUI diamondtxt;
     int count;
+    int newcount;
 
     public GameObject TutorialPanel;
     public GameObject MainUI;
@@ -29,9 +30,14 @@ public class MainMenuManager : MonoBehaviour
             GameManager.instance.Diamonds = PlayerPrefs.GetInt("diamonds", 0);
             diamondtxt.text = GameManager.instance.Diamonds.ToString();
         }
+        
         if (PlayerPrefs.HasKey("count"))
         {
             count = PlayerPrefs.GetInt("count", 0);
+        }
+        if (PlayerPrefs.HasKey("newcount"))
+        {
+            newcount = PlayerPrefs.GetInt("newcount", 0);
         }
         Tm.enabled = false;
         MainUI.SetActive(true);
@@ -54,14 +60,17 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        if (count == 0)
+        if (count == 0 || newcount==0)
         {
             MainUI.SetActive(false);
             TutorialPanel.SetActive(true);
             Tm.ShowCurrentPanel();
             Tm.enabled = true;
             count++;
+            newcount++;
             PlayerPrefs.SetInt("count", count);
+            PlayerPrefs.SetInt("newcount", newcount);
+            
         }
 
         else

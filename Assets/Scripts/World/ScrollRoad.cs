@@ -6,7 +6,7 @@ public class ScrollRoad : MonoBehaviour
 {
     public float speed = -15f;
     public float currentSpeed;
-    private void Update()
+    private void FixedUpdate()
     {
         if (PlayerControler.IsCollided || FuelManager.FuelOver)
         {
