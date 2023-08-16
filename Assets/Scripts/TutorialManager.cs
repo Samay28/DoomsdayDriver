@@ -31,7 +31,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        if (currentIndex == 3)
+        if (currentIndex == 5)
         {
             LoadNextScene();
         }
