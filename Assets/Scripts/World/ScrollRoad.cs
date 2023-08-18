@@ -6,7 +6,7 @@ public class ScrollRoad : MonoBehaviour
 {
     public float speed = -15f;
     public float currentSpeed;
-    private void FixedUpdate()
+    private void Update()
     {
         if (PlayerControler.IsCollided || FuelManager.FuelOver)
         {
@@ -14,6 +14,15 @@ public class ScrollRoad : MonoBehaviour
         }
         else
         {
+            if (BoostController.isBoosting)
+            {
+                speed = -30f;
+            }
+            else if (!BoostController.isBoosting)
+            {
+                speed = currentSpeed;
+                DifficultyIncrease();
+            }
             StartScrolling();
 
         }
@@ -25,17 +34,6 @@ public class ScrollRoad : MonoBehaviour
     public void StartScrolling()
     {
         this.transform.position += PlayerControler.Player.transform.forward * speed * Time.deltaTime;
-        if (BoostController.isBoosting)
-        {
-            speed = -30f;
-            Debug.Log("boost");
-        }
-        else if (!BoostController.isBoosting)
-        {
-            speed = currentSpeed;
-            DifficultyIncrease();
-            Debug.Log("notboost");
-        }
 
     }
     public void DifficultyIncrease()

@@ -41,8 +41,7 @@ public class PlayerControler : MonoBehaviour
         BoostParticles1.Stop();
         BoostParticles2.Stop();
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
         if (!IsCollided && !FuelManager.FuelOver)
         {
@@ -59,6 +58,7 @@ public class PlayerControler : MonoBehaviour
                     }
                     else if (Input.touchCount == 1)
                     {
+
                         BoostController.isBoosting = false;
                         if (Input.mousePosition.x < Screen.width / 2)
                         {
@@ -73,21 +73,26 @@ public class PlayerControler : MonoBehaviour
 
                     }
                     else
-                    BoostController.isBoosting = false;
-
+                        BoostController.isBoosting = false;
                 }
             }
-            
         }
-
         if (!BoostController.isBoosting)
         {
             BoostParticles1.Stop();
             BoostParticles2.Stop();
         }
+    }
 
+    private void FixedUpdate()
+    {
+        if (!IsCollided && !FuelManager.FuelOver)
+        {
+        }
 
     }
+
+
     // private void ClampRotation()
     // {
     //     Vector3 currentRotation = transform.localEulerAngles;

@@ -812,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 926217022210404557, guid: d75f43f834177b847ab9b9b1e0de4487,
         type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 926217022210404557, guid: d75f43f834177b847ab9b9b1e0de4487,
         type: 3}
@@ -1086,21 +1086,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - prefab: {fileID: 387249669050690523, guid: d897fb2f294867646aed119edb33fcd6, type: 3}
-    amount: 1
-    expandable: 0
-  - prefab: {fileID: 7287177241793069358, guid: 127406ff0af142447856b926356ee896,
+  - prefab: {fileID: 9045469621813465527, guid: d897fb2f294867646aed119edb33fcd6,
       type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 9201263330756675719, guid: 7c9e90ffc6cdf8e479f4d4813ea3d423,
+  - prefab: {fileID: 1955904562947724331, guid: 127406ff0af142447856b926356ee896,
       type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 272965746451609722, guid: a4e522ba65f5eed4fa94546a5df5382b, type: 3}
+  - prefab: {fileID: 2814018939398619899, guid: 7c9e90ffc6cdf8e479f4d4813ea3d423,
+      type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 3995934154346541107, guid: f273bcc4df8fe2f4eb9fb5863a14c75f,
+  - prefab: {fileID: 3762620143681040174, guid: a4e522ba65f5eed4fa94546a5df5382b,
+      type: 3}
+    amount: 1
+    expandable: 0
+  - prefab: {fileID: 2875993692868338163, guid: f273bcc4df8fe2f4eb9fb5863a14c75f,
       type: 3}
     amount: 1
     expandable: 0
@@ -2309,22 +2311,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - prefab: {fileID: 5663563339142790140, guid: d3681df06f0f51840a721de13ec5db3a,
+  - prefab: {fileID: 5259722409116225924, guid: d3681df06f0f51840a721de13ec5db3a,
       type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 2214040648149254364, guid: 99e37b138bc32004a89240405bd08a9c,
+  - prefab: {fileID: 8709355869799461375, guid: 99e37b138bc32004a89240405bd08a9c,
       type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 5084357850538222506, guid: 0aec759c68332bc4da6ba02c3ec117d1,
+  - prefab: {fileID: 6688913076442747657, guid: 0aec759c68332bc4da6ba02c3ec117d1,
       type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 806648924030647211, guid: 581c4e0f3cb558840b9d1b4ebca3b1a3, type: 3}
+  - prefab: {fileID: 8457488222086300655, guid: 581c4e0f3cb558840b9d1b4ebca3b1a3,
+      type: 3}
     amount: 1
     expandable: 0
-  - prefab: {fileID: 5900070594763814195, guid: ac885df646019de4f8492044641f51f2,
+  - prefab: {fileID: 3835700977016801059, guid: ac885df646019de4f8492044641f51f2,
       type: 3}
     amount: 1
     expandable: 0
