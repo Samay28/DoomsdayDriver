@@ -6,7 +6,7 @@ public class ScrollRoad : MonoBehaviour
 {
     public float speed = -15f;
     public float currentSpeed;
-    private void Update()
+    private void LateUpdate()
     {
         if (PlayerControler.IsCollided || FuelManager.FuelOver)
         {
@@ -14,6 +14,14 @@ public class ScrollRoad : MonoBehaviour
         }
         else
         {
+            StartScrolling();
+        }
+
+
+    }
+    private void Update()
+    {
+        if (!PlayerControler.IsCollided || !FuelManager.FuelOver)
             if (BoostController.isBoosting)
             {
                 speed = -30f;
@@ -23,9 +31,8 @@ public class ScrollRoad : MonoBehaviour
                 speed = currentSpeed;
                 DifficultyIncrease();
             }
-            StartScrolling();
 
-        }
+
     }
     public void stopscroll()
     {

@@ -16,14 +16,14 @@ public class GenerateW : MonoBehaviour
 
     public void RunDummy()
     {
-        if (GameManager.score <= 20)
+        if (GameManager.score <= 10)
         {
             GameObject p = ObjectPool.instance.GetRandom();
             if (p == null) return;
 
             if (LastPlatform != null)
             {
-                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66.25f);
+                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66f);
                 dummyTraveller.transform.position = spawnPosition;
 
             }
@@ -32,14 +32,14 @@ public class GenerateW : MonoBehaviour
             p.transform.position = dummyTraveller.transform.position;
             p.transform.rotation = dummyTraveller.transform.rotation;
         }
-        else if (GameManager.score > 20)
+        else if (GameManager.score > 10)
         {
             GameObject p = ObjectPool2.instance.GetRandom();
             if (p == null) return;
 
             if (LastPlatform != null)
             {
-                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 66.25f);
+                Vector3 spawnPosition = LastPlatform.transform.position + new Vector3(0f, 0f, 65.75f);
                 dummyTraveller.transform.position = spawnPosition;
 
             }
