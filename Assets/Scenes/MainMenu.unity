@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.58
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1511776, g: 0.40615726, b: 0.4824313, a: 0.58}
+  m_IndirectSpecularColor: {r: 0.15108357, g: 0.40620422, b: 0.48261347, a: 0.58}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -594,68 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a065bf2f7d14e004a980dfe8dc679948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cars:
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  - CargameObject: {fileID: 0}
-    value: 0
-    locked: 1
-  UnlockedCar: 0
+  carDatabase: {fileID: 11400000, guid: 7faf25cd25ef9334ab0b9ef5e16cea40, type: 2}
 --- !u!114 &398984887
 MonoBehaviour:
   m_ObjectHideFlags: 0

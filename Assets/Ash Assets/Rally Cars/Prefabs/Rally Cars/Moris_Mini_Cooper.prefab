@@ -464,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1435215116862488817
 Transform:
   m_ObjectHideFlags: 0
@@ -494,8 +494,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5373d70c789fb4294e0a09284e8e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ss: {fileID: 0}
+  speed: 40
   gw: {fileID: 0}
-  scoreText: {fileID: 0}
+  Move: {fileID: 0}
+  Crashed: {fileID: 0}
+  Collected: {fileID: 0}
+  Music: {fileID: 0}
+  GameOverAudio: {fileID: 0}
+  FuelSystem: {fileID: 0}
+  BoostSystem: {fileID: 0}
+  BoostParticles1: {fileID: 0}
+  BoostParticles2: {fileID: 0}
 --- !u!54 &926217022210404557
 Rigidbody:
   m_ObjectHideFlags: 0

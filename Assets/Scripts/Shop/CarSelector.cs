@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class CarSelector : MonoBehaviour
 {
-    public Car[] Cars;
+    public CarsDatabase carDatabase; // Reference to your CarsDatabase scriptable object
     public static int selectedCar = 0;
-    public int UnlockedCar = 0;
 
     void Start()
     {
+        // Load the selected car index from PlayerPrefs
         selectedCar = PlayerPrefs.GetInt("selectedcar", 0);
-        selectedCar = Mathf.Clamp(selectedCar, 0, Cars.Length - 1);
+
+        // Ensure selectedCar is within valid bounds
+        selectedCar = Mathf.Clamp(selectedCar, 0, carDatabase.carsCount - 1);
+
+        // Set the initially selected car
         SetSelectedCar(selectedCar);
-
-        for (int i = 0; i < Cars.Length; i++)
-        {
-
-        }
     }
 
     void Update()
@@ -28,32 +27,27 @@ public class CarSelector : MonoBehaviour
     public void NextCar()
     {
         // Deactivate the currently selected car.
-        Cars[selectedCar].CargameObject.SetActive(false);
+        carDatabase.GetCars(selectedCar).CargameObject.SetActive(false);
 
         // Increment the selectedCar index and wrap around if necessary.
-        selectedCar = (selectedCar + 1) % Cars.Length;
+        selectedCar = (selectedCar + 1) % carDatabase.carsCount;
 
         // Activate the newly selected car.
         SetSelectedCar(selectedCar);
 
-        Debug.Log(selectedCar);
+        // Save the selected car index to PlayerPrefs
+        PlayerPrefs.SetInt("selectedcar", selectedCar);
+        PlayerPrefs.Save();
+
+        Debug.Log("Selected Car Index: " + selectedCar);
     }
 
     // Helper method to activate the selected car and deactivate others.
     public void SetSelectedCar(int index)
     {
-        for (int i = 0; i < Cars.Length; i++)
+        for (int i = 0; i < carDatabase.carsCount; i++)
         {
-            // Cars[i].CargameObject.SetActive(i == index);
+            carDatabase.GetCars(i).CargameObject.SetActive(i == index);
         }
-        // for (int i = 0; i < Cars.Length; i++)
-        // {
-        //     if (Cars[i].Locked == false)
-        //     {
-        //         PlayerPrefs.SetInt("selectedCar", selectedCar);
-        //         PlayerPrefs.Save();
-        //     }
-        // }
     }
-
 }
