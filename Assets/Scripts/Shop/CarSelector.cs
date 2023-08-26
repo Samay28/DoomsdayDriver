@@ -9,6 +9,14 @@ public class CarSelector : MonoBehaviour
     public static int selectedCar = 0;
     public int ViewingCar = 0;
 
+
+    Vector2 startTouchPos;
+    Vector2 currentTouchPos;
+    Vector2 endTouchPos;
+    bool stopTouch = false;
+    public float swipeRange;
+    public float tapRange;
+
     void Start()
     {
         // Load the selected car index from PlayerPrefs
@@ -16,6 +24,7 @@ public class CarSelector : MonoBehaviour
 
         // Ensure selectedCar is within valid bounds
         selectedCar = Mathf.Clamp(selectedCar, 0, carDatabase.carsCount - 1);
+        ViewingCar = Mathf.Clamp(ViewingCar, 0, carDatabase.carsCount - 1);
 
         // Set the initially selected car
         SetSelectedCar(selectedCar);
@@ -24,7 +33,48 @@ public class CarSelector : MonoBehaviour
 
     void Update()
     {
-        // You can handle your swipe input here and call NextCar() when needed.
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            startTouchPos = Input.GetTouch(0).position;
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            currentTouchPos = Input.GetTouch(0).position;
+            Vector2 Distance = currentTouchPos - startTouchPos;
+
+            if (!stopTouch)
+            {
+                if (Distance.x < -swipeRange)
+                {
+                    if (ViewingCar == 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        PrevCar();
+                    }
+                    stopTouch = true;
+                }
+                else if (Distance.x > swipeRange)
+                {
+                    if (ViewingCar == 20)
+                    {
+                        ViewingCar = 0;
+                    }
+                    NextCar();
+                    stopTouch = true;
+                }
+            }
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            stopTouch = false;
+            endTouchPos = Input.GetTouch(0).position;
+            Vector2 Distance = endTouchPos - startTouchPos;
+        }
+
+
     }
 
     public void NextCar()
@@ -35,6 +85,20 @@ public class CarSelector : MonoBehaviour
 
         // Increment the selectedCar index and wrap around if necessary.
         ViewingCar = (ViewingCar + 1) % carDatabase.carsCount;
+
+
+        SetSelectedCar(ViewingCar);
+        Debug.Log(ViewingCar);
+
+    }
+    public void PrevCar()
+    {
+        // Deactivate the currently selected car.
+        carDatabase.GetCars(ViewingCar).CargameObject.SetActive(false);
+        CarPrefabs[ViewingCar].SetActive(false);
+
+        // Increment the selectedCar index and wrap around if necessary.
+        ViewingCar = (ViewingCar - 1) % carDatabase.carsCount;
 
 
         SetSelectedCar(ViewingCar);
@@ -65,7 +129,8 @@ public class CarSelector : MonoBehaviour
 
     }
     public void SaveCar()
-    {
+    {   
+        selectedCar = ViewingCar;
         SetSelectedCar(selectedCar);
     }
     public void PurchaseCar()
