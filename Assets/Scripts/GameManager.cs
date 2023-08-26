@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int DiamondsCollected;
     [SerializeField] Text CurrentDiamondTxt;
     [SerializeField] public int HighScore;
+    [SerializeField] GameObject[] Cars;
     bool isCalled;
 
     void Start()
@@ -23,6 +24,19 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        for (int i = 0; i < Cars.Length; i++)
+        {
+            if (i != CarSelector.selectedCar)
+            {
+                Cars[i].SetActive(false);
+            }
+            else
+            {
+                Cars[i].SetActive(true);
+            }
+        }
+
         // Diamonds = 0;
         HighScore = PlayerPrefs.GetInt("highscore", 0);
         DiamondsCollected = 0;
@@ -36,8 +50,8 @@ public class GameManager : MonoBehaviour
                 Diamonds = PlayerPrefs.GetInt("diamonds");
                 Diamondtxt.text = Diamonds.ToString();
             }
-            else 
-            return;
+            else
+                return;
         }
     }
 

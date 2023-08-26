@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +15,11 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject TutorialPanel;
     public GameObject MainUI;
+    public GameObject StoreUI;
     public TutorialManager Tm;
+
+    public PlayableDirector TransCam1;
+    public PlayableDirector TransCam2;
     void Start()
     {
         StartCoroutine(LoadSceneAsync());
@@ -90,5 +95,17 @@ public class MainMenuManager : MonoBehaviour
     public void RateOnPlayStore()
     {
         Application.OpenURL("https://play.google.com/store/apps/details?id=com.DoomsdayDriver.driverpath");
+    }
+    public void StoreButton()
+    {
+        TransCam1.Play();
+        MainUI.SetActive(false);
+        StoreUI.SetActive(true);
+    }
+    public void BackFromStore()
+    {
+        TransCam2.Play();
+        MainUI.SetActive(true);
+        StoreUI.SetActive(false);
     }
 }
