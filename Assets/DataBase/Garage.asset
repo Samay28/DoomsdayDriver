@@ -17,79 +17,79 @@ MonoBehaviour:
       type: 3}
     value: 0
     locked: 0
-  - CargameObject: {fileID: 8484030449367306885, guid: a39ace4ad51671445bd5c142a311deb4,
+  - CargameObject: {fileID: 8362892005680959943, guid: 7b59d2a16f9ed12408197dcbfa6fede8,
       type: 3}
-    value: 0
-    locked: 0
-  - CargameObject: {fileID: 3740975248759405317, guid: 8233aae5745f87f4b9e2596bfa36609d,
+    value: 25
+    locked: 1
+  - CargameObject: {fileID: 2233851091189740196, guid: 67f27f966232f3e4a90684957cbfe1e1,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 5922467771226897176, guid: dba8d7ea4fc75204e9946a0df23d89a0,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 6096161435309845058, guid: 92dc9059c105be646920e7793f7b87ad,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 1511334124429455304, guid: 9a87711dd077f354e81355ff51dc2452,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 8150406114401893393, guid: c473ac96c31493b4d9f2096ede26dfdf,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 9087902732169634773, guid: 22c2659f12b2f134da67892408fbb7d0,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 7017705903358585362, guid: 0809492e0e99fa04b9aee31b8c12698e,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 5029938163581490152, guid: 98f6fba07bd4b024ca9d7af99745ef37,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 7584029088948849421, guid: 39deda189b5d1804a9e1f96533784520,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 1264222930581359494, guid: 5c8980fdbd679dc49a18135f2e74ad8b,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 1858223380312346982, guid: a0130296251532147a9827c13d906555,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 997773105717432923, guid: 17e1e325f25c05b49b9e2302758eeeee,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 7105210647496118202, guid: 4e8ab3c2a935a5442b10e013f09e9e37,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 317369444969690471, guid: ddbc2a8f0959f5f4995e0c6bfd1d8d2b,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 3784087677487629359, guid: 35ade12cb073d984b8ce1072887af60c,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 7903861750581839379, guid: 84365073985f8be44ba9814dbf4f7659,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 2834717671408639086, guid: f7dc45cb727ee8b48af88d19ac700db4,
       type: 3}
-    value: 0
+    value: 25
     locked: 1
   - CargameObject: {fileID: 6888650195207813830, guid: 2a549c2686625ac47af48a43cf1d32b9,
       type: 3}
-    value: 0
+    value: 25
     locked: 1

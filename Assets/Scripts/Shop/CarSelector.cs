@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CarSelector : MonoBehaviour
 {
+    public GameObject[] CarPrefabs;
     public CarsDatabase carDatabase; // Reference to your CarsDatabase scriptable object
     public static int selectedCar = 0;
+    public int ViewingCar = 0;
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class CarSelector : MonoBehaviour
 
         // Set the initially selected car
         SetSelectedCar(selectedCar);
+        ViewingCar = selectedCar;
     }
 
     void Update()
@@ -27,19 +30,16 @@ public class CarSelector : MonoBehaviour
     public void NextCar()
     {
         // Deactivate the currently selected car.
-        carDatabase.GetCars(selectedCar).CargameObject.SetActive(false);
+        carDatabase.GetCars(ViewingCar).CargameObject.SetActive(false);
+        CarPrefabs[ViewingCar].SetActive(false);
 
         // Increment the selectedCar index and wrap around if necessary.
-        selectedCar = (selectedCar + 1) % carDatabase.carsCount;
+        ViewingCar = (ViewingCar + 1) % carDatabase.carsCount;
 
-        // Activate the newly selected car.
-        SetSelectedCar(selectedCar);
 
-        // Save the selected car index to PlayerPrefs
-        PlayerPrefs.SetInt("selectedcar", selectedCar);
-        PlayerPrefs.Save();
+        SetSelectedCar(ViewingCar);
+        Debug.Log(ViewingCar);
 
-        Debug.Log("Selected Car Index: " + selectedCar);
     }
 
     // Helper method to activate the selected car and deactivate others.
@@ -48,6 +48,59 @@ public class CarSelector : MonoBehaviour
         for (int i = 0; i < carDatabase.carsCount; i++)
         {
             carDatabase.GetCars(i).CargameObject.SetActive(i == index);
+            CarPrefabs[i].SetActive(i == index);
+
+            if (carDatabase.GetCars(i).locked == false)
+            {
+                PlayerPrefs.SetInt("selectedcar", selectedCar);
+                PlayerPrefs.Save();
+
+                Debug.Log("Selected Car Index: " + selectedCar);
+            }
+            // else
+            // {
+
+            // }
         }
+
+    }
+    public void SaveCar()
+    {
+        SetSelectedCar(selectedCar);
+    }
+    public void PurchaseCar()
+    {
+        if (carDatabase.GetCars(ViewingCar).locked == true)
+        {
+            if (GameManager.instance.Diamonds >= 1)
+            {
+                GameManager.instance.Diamonds = GameManager.instance.Diamonds - 1;
+                PlayerPrefs.SetInt("diamonds", GameManager.instance.Diamonds);
+                carDatabase.GetCars(selectedCar).locked = false;
+
+
+                SaveCarData(selectedCar, carDatabase.GetCars(selectedCar).locked);
+                Debug.Log("Transaction successfull");
+                selectedCar = ViewingCar;
+                PlayerPrefs.SetInt("selectedcar", selectedCar);
+                PlayerPrefs.Save();
+
+                Debug.Log("Selected Car Index: " + selectedCar);
+            }
+            else
+            {
+                Debug.Log("not enough ");
+            }
+        }
+    }
+    private void SaveCarData(int carIndex, bool lockedStatus)
+    {
+        // You can use a key unique to each car to store its locked status.
+        // For example, use "carX_locked" where X is the car's index.
+        string key = "car" + carIndex + "_locked";
+
+        // Store the locked status in PlayerPrefs
+        PlayerPrefs.SetInt(key, lockedStatus ? 1 : 0);
+        PlayerPrefs.Save();
     }
 }
