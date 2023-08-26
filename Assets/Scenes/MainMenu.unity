@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.58
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15108357, g: 0.40620422, b: 0.48261347, a: 0.58}
+  m_IndirectSpecularColor: {r: 0.1511776, g: 0.40615726, b: 0.4824313, a: 0.58}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,26 +595,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cars:
-  - {fileID: 3991288382477131998}
-  - {fileID: 3991288382477132009}
-  - {fileID: 3991288382477132008}
-  - {fileID: 3991288382477132007}
-  - {fileID: 3991288382477132006}
-  - {fileID: 3991288382477132005}
-  - {fileID: 3991288382477132004}
-  - {fileID: 3991288382477132003}
-  - {fileID: 3991288382477132002}
-  - {fileID: 3991288382477132001}
-  - {fileID: 3991288382477132000}
-  - {fileID: 3991288382477131999}
-  - {fileID: 3991288382477131997}
-  - {fileID: 3991288382477131996}
-  - {fileID: 3991288382477131995}
-  - {fileID: 3991288382477131994}
-  - {fileID: 3991288382477131993}
-  - {fileID: 3991288382477131992}
-  - {fileID: 3991288382477131991}
-  - {fileID: 3991288382477131990}
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  - CargameObject: {fileID: 0}
+    value: 0
+    locked: 1
+  UnlockedCar: 0
 --- !u!114 &398984887
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarSelector : MonoBehaviour
 {
-    public GameObject[] Cars;
+    public Car[] Cars;
     public static int selectedCar = 0;
-    bool isLocked = true;
+    public int UnlockedCar = 0;
 
     void Start()
     {
@@ -14,9 +14,9 @@ public class CarSelector : MonoBehaviour
         selectedCar = Mathf.Clamp(selectedCar, 0, Cars.Length - 1);
         SetSelectedCar(selectedCar);
 
-          for (int i = 0; i < Cars.Length; i++)
+        for (int i = 0; i < Cars.Length; i++)
         {
-            Cars[i].
+
         }
     }
 
@@ -28,7 +28,7 @@ public class CarSelector : MonoBehaviour
     public void NextCar()
     {
         // Deactivate the currently selected car.
-        Cars[selectedCar].SetActive(false);
+        Cars[selectedCar].CargameObject.SetActive(false);
 
         // Increment the selectedCar index and wrap around if necessary.
         selectedCar = (selectedCar + 1) % Cars.Length;
@@ -36,18 +36,24 @@ public class CarSelector : MonoBehaviour
         // Activate the newly selected car.
         SetSelectedCar(selectedCar);
 
-        PlayerPrefs.SetInt("selectedCar", selectedCar);
-        PlayerPrefs.Save();
-
         Debug.Log(selectedCar);
     }
 
     // Helper method to activate the selected car and deactivate others.
-    private void SetSelectedCar(int index)
+    public void SetSelectedCar(int index)
     {
         for (int i = 0; i < Cars.Length; i++)
         {
-            Cars[i].SetActive(i == index);
+            // Cars[i].CargameObject.SetActive(i == index);
         }
+        // for (int i = 0; i < Cars.Length; i++)
+        // {
+        //     if (Cars[i].Locked == false)
+        //     {
+        //         PlayerPrefs.SetInt("selectedCar", selectedCar);
+        //         PlayerPrefs.Save();
+        //     }
+        // }
     }
+
 }
