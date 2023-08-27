@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShareButton : MonoBehaviour
 {
-    public string shareText = "Check out my awesome game!";
+    public string shareText = "Check out this Awesome Unique Game!!";
     public string gameURL = "https://yourgameurl.com";
 
     public void Share()

@@ -20,12 +20,40 @@ public class CarSelector : MonoBehaviour
     public GameObject SelectButton;
     public GameObject PurchaseButton;
 
-    private void Awake()
-    {
+    // private void Start()
+    // {
+    // }
 
-    }
     void Start()
     {
+        // Assuming you have a total number of cars (e.g., totalCars)
+        int totalCars = 20; // Change this to the total number of cars you have
+
+        // Create a list to store the locked status of all cars
+        List<bool> carLockedStatusList = new List<bool>();
+
+        for (int carIndex = 0; carIndex < totalCars; carIndex++)
+        {
+            // Construct the key for the locked status of the car
+            string key = "car" + carIndex + "_locked";
+
+            // Retrieve the locked status from PlayerPrefs
+            int lockedStatus = PlayerPrefs.GetInt(key, 1); // Default to 1 if the key doesn't exist (locked)
+
+            // Convert the lockedStatus (1 or 0) to a boolean
+            bool isLocked = lockedStatus == 1;
+
+            // Add the locked status to the list
+            carLockedStatusList.Add(isLocked);
+        }
+
+        // Now, 'carLockedStatusList' contains the locked status of all cars.
+        // You can use this list in your logic as needed.
+        for (int carIndex = 1; carIndex < totalCars; carIndex++)
+        {
+            Debug.Log("Car " + carIndex + " is locked: " + carLockedStatusList[carIndex]);
+            carDatabase.GetCars(carIndex).locked = carLockedStatusList[carIndex];
+        }
         // Load the selected car index from PlayerPrefs
         selectedCar = PlayerPrefs.GetInt("selectedcar", 0);
 
