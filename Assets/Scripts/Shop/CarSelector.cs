@@ -17,6 +17,13 @@ public class CarSelector : MonoBehaviour
     public float swipeRange;
     public float tapRange;
 
+    public GameObject SelectButton;
+    public GameObject PurchaseButton;
+
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         // Load the selected car index from PlayerPrefs
@@ -33,6 +40,7 @@ public class CarSelector : MonoBehaviour
 
     void Update()
     {
+
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             startTouchPos = Input.GetTouch(0).position;
@@ -73,6 +81,16 @@ public class CarSelector : MonoBehaviour
             endTouchPos = Input.GetTouch(0).position;
             Vector2 Distance = endTouchPos - startTouchPos;
         }
+        if (carDatabase.GetCars(ViewingCar).locked == false)
+        {
+            PurchaseButton.SetActive(false);
+            SelectButton.SetActive(true);
+        }
+        else
+        {
+            PurchaseButton.SetActive(true);
+            SelectButton.SetActive(false);
+        }
 
 
     }
@@ -86,6 +104,16 @@ public class CarSelector : MonoBehaviour
         // Increment the selectedCar index and wrap around if necessary.
         ViewingCar = (ViewingCar + 1) % carDatabase.carsCount;
 
+        // if (carDatabase.GetCars(ViewingCar).locked == false)
+        // {
+        //     PurchaseButton.SetActive(false);
+        //     SelectButton.SetActive(true);
+        // }
+        // else
+        // {
+        //     PurchaseButton.SetActive(true);
+        //     SelectButton.SetActive(false);
+        // }
 
         SetSelectedCar(ViewingCar);
         Debug.Log(ViewingCar);
@@ -100,6 +128,16 @@ public class CarSelector : MonoBehaviour
         // Increment the selectedCar index and wrap around if necessary.
         ViewingCar = (ViewingCar - 1) % carDatabase.carsCount;
 
+        // if (carDatabase.GetCars(ViewingCar).locked == false)
+        // {
+        //     PurchaseButton.SetActive(false);
+        //     SelectButton.SetActive(true);
+        // }
+        // else
+        // {
+        //     PurchaseButton.SetActive(true);
+        //     SelectButton.SetActive(false);
+        // }
 
         SetSelectedCar(ViewingCar);
         Debug.Log(ViewingCar);
@@ -116,11 +154,18 @@ public class CarSelector : MonoBehaviour
 
             if (carDatabase.GetCars(i).locked == false)
             {
+                // PurchaseButton.SetActive(false);
+                // SelectButton.SetActive(true);
                 PlayerPrefs.SetInt("selectedcar", selectedCar);
                 PlayerPrefs.Save();
 
                 Debug.Log("Selected Car Index: " + selectedCar);
             }
+            // else
+            // {
+            //     PurchaseButton.SetActive(true);
+            //     SelectButton.SetActive(false);
+            // }
             // else
             // {
 
@@ -129,43 +174,55 @@ public class CarSelector : MonoBehaviour
 
     }
     public void SaveCar()
-    {   
+    {
         selectedCar = ViewingCar;
         SetSelectedCar(selectedCar);
     }
+
     public void PurchaseCar()
     {
-        if (carDatabase.GetCars(ViewingCar).locked == true)
+        // Check if the car is locked
+        if (carDatabase.GetCars(ViewingCar).locked)
         {
+            // Check if the player has enough diamonds
             if (GameManager.instance.Diamonds >= 1)
             {
-                GameManager.instance.Diamonds = GameManager.instance.Diamonds - 1;
+                // Deduct one diamond from the player
+                GameManager.instance.Diamonds -= 1;
                 PlayerPrefs.SetInt("diamonds", GameManager.instance.Diamonds);
-                carDatabase.GetCars(selectedCar).locked = false;
 
+                // Unlock the car
+                carDatabase.GetCars(ViewingCar).locked = false;
 
-                SaveCarData(selectedCar, carDatabase.GetCars(selectedCar).locked);
-                Debug.Log("Transaction successfull");
-                selectedCar = ViewingCar;
-                PlayerPrefs.SetInt("selectedcar", selectedCar);
+                // Save the car data including its locked status
+                SaveCarData(ViewingCar, carDatabase.GetCars(ViewingCar).locked);
                 PlayerPrefs.Save();
 
+                // Update the selected car to the purchased car
+                selectedCar = ViewingCar;
+                PlayerPrefs.SetInt("selectedcar", selectedCar);
+
+                // Hide the PurchaseButton and show the SelectButton
+                PurchaseButton.SetActive(false);
+                SelectButton.SetActive(true);
+
+                Debug.Log("Transaction successful");
                 Debug.Log("Selected Car Index: " + selectedCar);
             }
             else
             {
-                Debug.Log("not enough ");
+                Debug.Log("Not enough diamond");
             }
         }
     }
+
     private void SaveCarData(int carIndex, bool lockedStatus)
     {
-        // You can use a key unique to each car to store its locked status.
-        // For example, use "carX_locked" where X is the car's index.
+        // Use a key unique to each car to store its locked status.
         string key = "car" + carIndex + "_locked";
 
         // Store the locked status in PlayerPrefs
         PlayerPrefs.SetInt(key, lockedStatus ? 1 : 0);
-        PlayerPrefs.Save();
     }
 }
+

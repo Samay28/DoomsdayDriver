@@ -12,6 +12,7 @@ public class FuelManager : MonoBehaviour
     public static bool FuelOver;
     private float timeSinceLastDecrease = 0.0f;
     public Slider FuelSlider;
+    public Image FuelIndicator;
 
     private void Start()
     {
@@ -38,6 +39,15 @@ public class FuelManager : MonoBehaviour
             FuelPanel.SetActive(true);
         }
         TotalFuel = Mathf.Clamp(TotalFuel, 0, 100);
+
+        if(TotalFuel<=30)
+        {
+            FuelIndicator.enabled = true;
+        }
+        else
+        {
+            FuelIndicator.enabled = false;
+        }
     }
 
     private void DecreaseFuel()

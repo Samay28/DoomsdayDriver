@@ -7,5 +7,5 @@ public class Car
 {
     public GameObject CargameObject;
     public int value;
-    public bool locked = true;
+    public bool locked;
 }

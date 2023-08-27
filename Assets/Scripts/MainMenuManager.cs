@@ -16,6 +16,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject TutorialPanel;
     public GameObject MainUI;
     public GameObject StoreUI;
+    public GameObject SettingsUI;
+    public GameObject SubSettingsPanel;
+    public GameObject InstructionsPanel;
     public TutorialManager Tm;
 
     public PlayableDirector TransCam1;
@@ -107,5 +110,25 @@ public class MainMenuManager : MonoBehaviour
         TransCam2.Play();
         MainUI.SetActive(true);
         StoreUI.SetActive(false);
+    }
+    public void OpenSettings()
+    {
+        SettingsUI.SetActive(true);
+        MainUI.SetActive(false);
+    }
+    public void BackFromSettings()
+    {
+        SettingsUI.SetActive(false);
+        MainUI.SetActive(true);
+    }
+    public void OpenInstructions()
+    {
+        InstructionsPanel.SetActive(true);
+        SubSettingsPanel.SetActive(false);
+    }
+    public void BackFromInstructions()
+    {
+        InstructionsPanel.SetActive(false);
+        SubSettingsPanel.SetActive(true);
     }
 }
