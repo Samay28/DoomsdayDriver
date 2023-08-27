@@ -24,9 +24,7 @@ public class PlayerControler : MonoBehaviour
     public AudioSource GameOverAudio;
     public static bool DisableCol;
     public FuelManager FuelSystem;
-    public BoostController BoostSystem;
-    public ParticleSystem BoostParticles1;
-    public ParticleSystem BoostParticles2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +36,6 @@ public class PlayerControler : MonoBehaviour
         Music.Play();
         DisableCol = false;
 
-        BoostParticles1.Stop();
-        BoostParticles2.Stop();
     }
     private void Update()
     {
@@ -50,16 +46,16 @@ public class PlayerControler : MonoBehaviour
                 Time.timeScale = 1f;
                 if (!EventSystem.current.currentSelectedGameObject)
                 {
-                    if (Input.touchCount == 2)
-                    {
-                        BoostSystem.Nitro();
-                        BoostParticles1.Play();
-                        BoostParticles2.Play();
-                    }
-                    else if (Input.touchCount == 1)
+                    // if (Input.touchCount == 2)
+                    // {
+                    //     BoostSystem.Nitro();
+                    //     BoostParticles1.Play();
+                    //     BoostParticles2.Play();
+                    // }
+                    if (Input.touchCount == 1)
                     {
 
-                        BoostController.isBoosting = false;
+                        // BoostController.isBoosting = false;
                         if (Input.mousePosition.x < Screen.width / 2)
                         {
                             transform.position += new Vector3(-speed * Time.deltaTime, 0f, 0f);
@@ -72,16 +68,12 @@ public class PlayerControler : MonoBehaviour
                         }
 
                     }
-                    else
-                        BoostController.isBoosting = false;
+                    // else
+                    //     BoostController.isBoosting = false;
                 }
             }
         }
-        if (!BoostController.isBoosting)
-        {
-            BoostParticles1.Stop();
-            BoostParticles2.Stop();
-        }
+
     }
 
     private void FixedUpdate()
@@ -167,4 +159,12 @@ public class PlayerControler : MonoBehaviour
         }
 
     }
+    // public void OnClickBoost()
+    // {
+
+    //     BoostSystem.Nitro();
+    //     BoostParticles1.Play();
+    //     BoostParticles2.Play();
+
+    // }
 }

@@ -503,9 +503,6 @@ MonoBehaviour:
   Music: {fileID: 0}
   GameOverAudio: {fileID: 0}
   FuelSystem: {fileID: 0}
-  BoostSystem: {fileID: 0}
-  BoostParticles1: {fileID: 0}
-  BoostParticles2: {fileID: 0}
 --- !u!54 &926217022210404557
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class GenerateW : MonoBehaviour
 
     public void RunDummy()
     {
-        if (GameManager.score <= 10)
+        if (GameManager.score <= 20)
         {
             GameObject p = ObjectPool.instance.GetRandom();
             if (p == null) return;
@@ -32,7 +32,7 @@ public class GenerateW : MonoBehaviour
             p.transform.position = dummyTraveller.transform.position;
             p.transform.rotation = dummyTraveller.transform.rotation;
         }
-        else if (GameManager.score > 10)
+        else if (GameManager.score > 20)
         {
             GameObject p = ObjectPool2.instance.GetRandom();
             if (p == null) return;

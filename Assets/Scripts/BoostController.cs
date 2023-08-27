@@ -36,7 +36,8 @@ public class BoostController : MonoBehaviour
         NosValue = Mathf.Clamp(NosValue, 0, 10);
     }
     public void Nitro()
-    {
+    {   
+        Debug.Log("clicked");
         if (NosValue > 0)
         {
             timeSinceLastDecrease += Time.deltaTime;
