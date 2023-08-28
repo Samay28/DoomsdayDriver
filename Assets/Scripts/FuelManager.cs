@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class FuelManager : MonoBehaviour
 {
     public float TotalFuel = 100.0f;
@@ -11,13 +11,14 @@ public class FuelManager : MonoBehaviour
     bool Called;
     public static bool FuelOver;
     private float timeSinceLastDecrease = 0.0f;
-    public Slider FuelSlider;
-    public Image FuelIndicator;
+    public Image[] FuelLevels;
 
     private void Start()
     {
-        FuelPanel.SetActive(false);
+        FuelPanel.SetActive(true);
         FuelOver = false;
+        UpdateFuelUI();
+        StartFuelDecrease();
     }
 
     private void Update()
@@ -32,22 +33,13 @@ public class FuelManager : MonoBehaviour
                 timeSinceLastDecrease = 0.0f;
             }
         }
-        if (!Called)
-        {
-            StartFuelDecrease();
-            Called = true;
-            FuelPanel.SetActive(true);
-        }
+        // if (!Called)
+        // {
+        //     StartFuelDecrease();
+        //     Called = true;
+        //     FuelPanel.SetActive(true);
+        // }
         TotalFuel = Mathf.Clamp(TotalFuel, 0, 100);
-
-        if(TotalFuel<=30)
-        {
-            FuelIndicator.enabled = true;
-        }
-        else
-        {
-            FuelIndicator.enabled = false;
-        }
     }
 
     private void DecreaseFuel()
@@ -60,11 +52,10 @@ public class FuelManager : MonoBehaviour
             if (road != null)
             {
                 TotalFuel = TotalFuel + road.speed * 1 / 10;
-                // Here you can access road.speed for each individual road instance
             }
         }
         Debug.Log(TotalFuel);
-        FuelSlider.value = TotalFuel;
+        UpdateFuelUI();
 
         if (TotalFuel <= 0)
         {
@@ -82,14 +73,28 @@ public class FuelManager : MonoBehaviour
     {
         shouldDecreaseFuel = false;
     }
+
     public void IncreaseFuel()
     {
         TotalFuel = TotalFuel + RefillRate;
-        Debug.Log(TotalFuel);
+        UpdateFuelUI();
     }
+
     public void ResetFuel()
     {
         TotalFuel = 100;
-        FuelSlider.value = TotalFuel;
+        UpdateFuelUI();
+    }
+
+    void UpdateFuelUI()
+    {
+        for (int i = 0; i < FuelLevels.Length; i++)
+        {
+            // Calculate the threshold for disabling/enabling each image.
+            float threshold = (i + 1) * (100.0f / FuelLevels.Length);
+
+            // Enable the image if the current fuel level is below this image's threshold.
+            FuelLevels[i].enabled = TotalFuel >= threshold;
+        }
     }
 }

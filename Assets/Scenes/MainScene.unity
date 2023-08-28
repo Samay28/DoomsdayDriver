@@ -15476,18 +15476,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1819158755}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1819158757 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1850159687454214702, guid: a81776c1902314641ab971b22e7c9312,
-    type: 3}
-  m_PrefabInstance: {fileID: 1819158755}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1830935714
 GameObject:
   m_ObjectHideFlags: 0
@@ -15625,8 +15613,14 @@ MonoBehaviour:
   DecreaseInterval: 1
   RefillRate: 40
   FuelPanel: {fileID: 731099498}
-  FuelSlider: {fileID: 1819158757}
-  FuelIndicator: {fileID: 1406550156}
+  FuelLevels:
+  - {fileID: 1108290587}
+  - {fileID: 1596989442}
+  - {fileID: 707733803}
+  - {fileID: 512803774}
+  - {fileID: 633621397}
+  - {fileID: 2074763021}
+  - {fileID: 3824963}
 --- !u!4 &1924311154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462536, guid: 85c5ecd5a01f542499944cbfe9dd1cf8,
