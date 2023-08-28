@@ -770,8 +770,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Rate Us
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de8e2851e714e9d4a8c559e2c3c70a8b, type: 2}
-  m_sharedMaterial: {fileID: -8683831683301241773, guid: de8e2851e714e9d4a8c559e2c3c70a8b,
+  m_fontAsset: {fileID: 11400000, guid: cc77bc41bea10c34583841c2a5a6e7cb, type: 2}
+  m_sharedMaterial: {fileID: -1177297009374227600, guid: cc77bc41bea10c34583841c2a5a6e7cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3179,8 +3179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How to Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de8e2851e714e9d4a8c559e2c3c70a8b, type: 2}
-  m_sharedMaterial: {fileID: -8683831683301241773, guid: de8e2851e714e9d4a8c559e2c3c70a8b,
+  m_fontAsset: {fileID: 11400000, guid: cc77bc41bea10c34583841c2a5a6e7cb, type: 2}
+  m_sharedMaterial: {fileID: -1177297009374227600, guid: cc77bc41bea10c34583841c2a5a6e7cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3393,8 +3393,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Share
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de8e2851e714e9d4a8c559e2c3c70a8b, type: 2}
-  m_sharedMaterial: {fileID: -8683831683301241773, guid: de8e2851e714e9d4a8c559e2c3c70a8b,
+  m_fontAsset: {fileID: 11400000, guid: cc77bc41bea10c34583841c2a5a6e7cb, type: 2}
+  m_sharedMaterial: {fileID: -1177297009374227600, guid: cc77bc41bea10c34583841c2a5a6e7cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3951,8 +3951,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Audio/Music
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de8e2851e714e9d4a8c559e2c3c70a8b, type: 2}
-  m_sharedMaterial: {fileID: -8683831683301241773, guid: de8e2851e714e9d4a8c559e2c3c70a8b,
+  m_fontAsset: {fileID: 11400000, guid: cc77bc41bea10c34583841c2a5a6e7cb, type: 2}
+  m_sharedMaterial: {fileID: -1177297009374227600, guid: cc77bc41bea10c34583841c2a5a6e7cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4604,8 +4604,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de8e2851e714e9d4a8c559e2c3c70a8b, type: 2}
-  m_sharedMaterial: {fileID: -8683831683301241773, guid: de8e2851e714e9d4a8c559e2c3c70a8b,
+  m_fontAsset: {fileID: 11400000, guid: cc77bc41bea10c34583841c2a5a6e7cb, type: 2}
+  m_sharedMaterial: {fileID: -1177297009374227600, guid: cc77bc41bea10c34583841c2a5a6e7cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4853,6 +4853,12 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!20 &1637333201 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4636680548827006386, guid: 10228fba0ba691442a5a303a17ddae45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1637333197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1654588215
 GameObject:
   m_ObjectHideFlags: 0
@@ -5225,6 +5231,7 @@ MonoBehaviour:
   Tm: {fileID: 1517408210}
   TransCam1: {fileID: 1147991201}
   TransCam2: {fileID: 2088934918}
+  Cam: {fileID: 1637333201}
 --- !u!114 &1693251741
 MonoBehaviour:
   m_ObjectHideFlags: 0

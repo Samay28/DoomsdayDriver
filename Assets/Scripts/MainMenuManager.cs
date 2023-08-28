@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.instance.Diamonds = PlayerPrefs.GetInt("diamonds", 0);
             diamondtxt.text = GameManager.instance.Diamonds.ToString();
         }
-        
+
         if (PlayerPrefs.HasKey("count"))
         {
             count = PlayerPrefs.GetInt("count", 0);
@@ -49,6 +50,7 @@ public class MainMenuManager : MonoBehaviour
         }
         Tm.enabled = false;
         MainUI.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -68,7 +70,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        if (count == 0 || newcount==0)
+        if (count == 0 || newcount == 0)
         {
             MainUI.SetActive(false);
             TutorialPanel.SetActive(true);
@@ -78,7 +80,7 @@ public class MainMenuManager : MonoBehaviour
             newcount++;
             PlayerPrefs.SetInt("count", count);
             PlayerPrefs.SetInt("newcount", newcount);
-            
+
         }
 
         else
@@ -101,15 +103,25 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StoreButton()
     {
+        TransCam2.extrapolationMode = DirectorWrapMode.None;
         TransCam1.Play();
         MainUI.SetActive(false);
         StoreUI.SetActive(true);
+        TransCam1.extrapolationMode = DirectorWrapMode.Hold;
+        // if (TransCam1.state == PlayState.Paused)
+        // { 
+        // }
     }
     public void BackFromStore()
     {
+        TransCam1.extrapolationMode = DirectorWrapMode.None;
         TransCam2.Play();
         MainUI.SetActive(true);
         StoreUI.SetActive(false);
+        TransCam2.extrapolationMode = DirectorWrapMode.Hold;
+        // if (TransCam2.state == PlayState.Paused)
+        // { 
+        // }
     }
     public void OpenSettings()
     {

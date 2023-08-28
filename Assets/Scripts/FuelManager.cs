@@ -86,9 +86,16 @@ public class FuelManager : MonoBehaviour
         UpdateFuelUI();
     }
 
-    void UpdateFuelUI()
+   void UpdateFuelUI()
+{
+    for (int i = 0; i < FuelLevels.Length; i++)
     {
-        for (int i = 0; i < FuelLevels.Length; i++)
+        if (i == 0)
+        {
+            // For the last image, disable it when fuel is less than or equal to 0.
+            FuelLevels[i].enabled = TotalFuel > 0;
+        }
+        else
         {
             // Calculate the threshold for disabling/enabling each image.
             float threshold = (i + 1) * (100.0f / FuelLevels.Length);
@@ -97,4 +104,6 @@ public class FuelManager : MonoBehaviour
             FuelLevels[i].enabled = TotalFuel >= threshold;
         }
     }
+}
+
 }
