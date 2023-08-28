@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CarSelector : MonoBehaviour
 {
@@ -68,46 +69,48 @@ public class CarSelector : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (!EventSystem.current.currentSelectedGameObject)
         {
-            startTouchPos = Input.GetTouch(0).position;
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            currentTouchPos = Input.GetTouch(0).position;
-            Vector2 Distance = currentTouchPos - startTouchPos;
-
-            if (!stopTouch)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                if (Distance.x < -swipeRange)
+                startTouchPos = Input.GetTouch(0).position;
+            }
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                currentTouchPos = Input.GetTouch(0).position;
+                Vector2 Distance = currentTouchPos - startTouchPos;
+
+                if (!stopTouch)
                 {
-                    if (ViewingCar == 0)
+                    if (Distance.x < -swipeRange)
                     {
-                        return;
+                        if (ViewingCar == 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            PrevCar();
+                        }
+                        stopTouch = true;
                     }
-                    else
+                    else if (Distance.x > swipeRange)
                     {
-                        PrevCar();
+                        if (ViewingCar == 20)
+                        {
+                            ViewingCar = 0;
+                        }
+                        NextCar();
+                        stopTouch = true;
                     }
-                    stopTouch = true;
-                }
-                else if (Distance.x > swipeRange)
-                {
-                    if (ViewingCar == 20)
-                    {
-                        ViewingCar = 0;
-                    }
-                    NextCar();
-                    stopTouch = true;
                 }
             }
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            stopTouch = false;
-            endTouchPos = Input.GetTouch(0).position;
-            Vector2 Distance = endTouchPos - startTouchPos;
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                stopTouch = false;
+                endTouchPos = Input.GetTouch(0).position;
+                Vector2 Distance = endTouchPos - startTouchPos;
+            }
         }
         if (carDatabase.GetCars(ViewingCar).locked == false)
         {
@@ -213,10 +216,10 @@ public class CarSelector : MonoBehaviour
         if (carDatabase.GetCars(ViewingCar).locked)
         {
             // Check if the player has enough diamonds
-            if (GameManager.instance.Diamonds >= 1)
+            if (GameManager.instance.Diamonds >= 20)
             {
                 // Deduct one diamond from the player
-                GameManager.instance.Diamonds -= 1;
+                GameManager.instance.Diamonds -= 20;
                 PlayerPrefs.SetInt("diamonds", GameManager.instance.Diamonds);
 
                 // Unlock the car
